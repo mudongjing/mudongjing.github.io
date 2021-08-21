@@ -1,0 +1,1031 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+
+/*
+ * Default theme，适用于 core/mweb-base.scss。
+ * 取值参考 chrome 默认样式：
+ * https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/html.css
+ * 所有 import "core/mweb-base.scss" 的文件都应该同时导入此变量文件。
+ */
+/* color */
+/* font & line */
+/* boxing */
+/* elememts */
+/* color */
+/* prism & pre */
+/* font */
+/* header */
+/* spacing */
+/* table */
+/*
+ * 基准样式，相当于 reset.css，使主题在不同平台下有统一的表现。
+ * 各个属性的默认值为 chrome 的默认样式，见 variables/default.scss。
+ */
+:root {
+  --text-color: #1f2329;
+  --bg-color: white;
+  --side-bar-bg-color: white;
+  --active-file-bg-color: white;
+  --window-border: 0 solid white;
+  --control-text-color: #1f2329;
+  --primary-color: #3370ff;
+  --primary-btn-border-color: #3370ff;
+  --active-file-border-color: #3370ff;
+  --primary-btn-text-color: #3370ff;
+  --item-hover-text-color: #3370ff;
+  --meta-content-color: #3370ff;
+  --search-select-text-color: #3370ff;
+  --heading-char-color: #3370ff;
+}
+
+#write {
+  line-height: 1.68;
+  -webkit-text-size-adjust: 100%;
+  max-width: 860px;
+  margin: 0px auto;
+  padding: 1.6rem 3.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, Segoe UI, PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 16px;
+  color: #1f2329;
+  /* spacing */
+  /* block */
+  /* list */
+  /* inline */
+  /* table */
+}
+#write * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#write > *:first-child {
+  margin-top: 0 !important;
+}
+#write > *:last-child {
+  margin-top: 0 !important;
+}
+#write p, #write details, #write dl, #write ol, #write ul, #write xmp, #write plaintext, #write listing, #write blockquote, #write table, #write figure, #write hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+#write h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h5 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h6 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write p {
+  margin-left: 0;
+  margin-right: 0;
+}
+#write pre, #write xmp, #write plaintext, #write listing {
+  font-family: var(--monospace);
+}
+#write blockquote > :first-child {
+  margin-top: 0;
+}
+#write blockquote > :last-child {
+  margin-bottom: 0;
+}
+#write hr {
+  border-style: inset;
+  border-width: 1px;
+}
+#write img {
+  max-width: 100%;
+  height: auto;
+}
+#write li {
+  word-wrap: break-all;
+}
+#write li + li {
+  margin-top: 4px;
+}
+#write ul ul, #write ol ul, #write ul ol, #write ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#write .task-list-item {
+  list-style-type: none;
+}
+#write a {
+  color: #3370ff;
+  text-decoration: underline;
+}
+#write a img {
+  border: none;
+}
+#write b, #write strong {
+  font-weight: bold;
+}
+#write i, #write cite, #write em, #write var, #write address, #write dfn {
+  font-style: italic;
+}
+#write code, #write kbd, #write tt, #write samp {
+  font-family: var(--monospace);
+}
+#write mark {
+  color: #1f2329;
+  padding: 0.2em 0;
+  background-color: rgba(255, 246, 122, 0.8);
+}
+#write del, #write s {
+  color: inherit;
+}
+#write table {
+  color: black;
+  border-collapse: collapse;
+  background-color: white;
+  border-spacing: 2px;
+  font-size: 1em;
+}
+#write th, #write td {
+  border-color: #dee0e3;
+  border-width: 1px;
+  border-style: solid;
+}
+#write th {
+  padding: 8px 8px;
+  font-size: 1em;
+  font-weight: 500;
+}
+#write td {
+  padding: 8px 8px;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+#write * {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+  line-height: 1.4;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0.37em;
+}
+#write blockquote {
+  display: block;
+  margin-left: 0;
+  padding-left: 14px;
+  border-left: 2px solid #3370ff;
+  color: rgba(31, 35, 41, 0.7);
+}
+#write code {
+  border-radius: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border: 1px solid #dee0e3;
+  background-color: #f5f6f7;
+  word-spacing: normal;
+  line-height: 1.6;
+  padding: 0 2px;
+}
+#write pre.md-fences,
+#write pre.md-meta-block {
+  border: 1px solid #dee0e3;
+  background-color: #f5f6f7;
+  border-radius: 3px;
+  padding: 10px;
+}
+#write a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  hyphens: auto;
+  word-break: break-word;
+  text-decoration: none;
+}
+#write a:hover {
+  text-decoration: underline;
+}
+#write hr {
+  margin: 13px 0 12px;
+  border: 0px;
+  height: 1px;
+  background-origin: content-box;
+  background-image: linear-gradient(90deg, #bbbfc4, #bbbfc4);
+  background-repeat: no-repeat;
+}
+#write ul {
+  margin-left: 0;
+  padding-left: 22px;
+  list-style: none;
+}
+#write ul > li:not([class*=task-list-item]) {
+  word-wrap: break-all;
+  padding-left: 0px;
+}
+#write ul > li:not([class*=task-list-item]):before {
+  position: absolute;
+  top: 2px;
+  content: "•";
+  color: #3370ff;
+  display: inline-block;
+  margin-left: -20px;
+  margin-right: 20px;
+  width: 0px;
+  font-size: 0.8em;
+  transform: scale(1.25);
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+#write ul > li:not([class*=task-list-item]) li:not([class*=task-list-item])::before {
+  content: "◦";
+  transform: scale(1);
+  font-weight: 700;
+}
+#write ul > li:not([class*=task-list-item]) li:not([class*=task-list-item]) li:not([class*=task-list-item])::before {
+  content: "▪";
+  transform: scale(1.25);
+  font-weight: normal;
+}
+#write ol {
+  counter-reset: ol_counter;
+  margin-left: 0;
+  padding-left: 22px;
+  list-style: none;
+}
+#write ol > li:not([class*=task-list-item]) {
+  word-wrap: break-all;
+  padding-left: 0px;
+  position: relative;
+}
+#write ol > li:not([class*=task-list-item]):before {
+  content: counter(ol_counter) ".";
+  counter-increment: ol_counter;
+  color: #3370ff;
+  position: absolute;
+  margin-left: -22px;
+  margin-right: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 18px;
+  border-radius: 2px;
+  transform: translateX(-2px);
+  font-family: Helvetica Neue, Consolas;
+}
+#write li + li, #write ul ul, #write ol ul, #write ul ol, #write ol ol, #write li ul, #write li ol {
+  margin-top: 4px;
+}
+#write .task-list-item {
+  padding-left: 0.3rem;
+}
+#write .task-list-item > p {
+  transition: color 0.3s, opacity 0.3s;
+}
+#write .task-list-item.task-list-done > p {
+  color: #646a73;
+  text-decoration: line-through;
+}
+#write .task-list-item.task-list-done > p > .md-emoji {
+  opacity: 0.5;
+}
+#write .task-list-item.task-list-done > p > .md-link > a {
+  opacity: 0.6;
+}
+#write .task-list-item > input {
+  -webkit-appearance: initial;
+  display: block;
+  position: absolute;
+  border: 1px solid #2b2f36;
+  border-radius: 0.25rem;
+  margin-left: -1.5rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  transition: border-color 0.3s;
+}
+#write .task-list-item > input:focus {
+  outline: none;
+  box-shadow: none;
+}
+#write .task-list-item > input:hover {
+  border-color: #3370ff;
+}
+#write .task-list-item > input[checked]::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 60%;
+  width: 2px;
+  transform: rotate(40deg);
+  background: #3370ff;
+}
+#write .task-list-item > input[checked]::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 25%;
+  height: 30%;
+  width: 2px;
+  transform: rotate(-40deg);
+  background: #3370ff;
+}
+
+#write strong {
+  color: #245bdb;
+}
+/**************************************
+ * Header Counters in Content
+ **************************************/
+ 
+/** initialize css counter */
+#write {
+    counter-reset: h1
+}
+ 
+h1 {
+    counter-reset: h2
+}
+ 
+h2 {
+    counter-reset: h3
+}
+ 
+h3 {
+    counter-reset: h4
+}
+ 
+h4 {
+    counter-reset: h5
+}
+ 
+h5 {
+    counter-reset: h6
+}
+ 
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+ 
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+ 
+#write h3:before, h3.md-focus.md-heading:before { /*override the default style for focused headings */
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+ 
+#write h4:before, h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+ 
+#write h5:before, h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+ 
+#write h6:before, h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+ 
+/** override the default style for focused headings */
+#write>h3.md-focus:before, #write>h4.md-focus:before, #write>h5.md-focus:before, #write>h6.md-focus:before, h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+.sidebar-content {
+    counter-reset: h1
+}
+ 
+.outline-h1 {
+    counter-reset: h2
+}
+ 
+.outline-h2 {
+    counter-reset: h3
+}
+ 
+.outline-h3 {
+    counter-reset: h4
+}
+ 
+.outline-h4 {
+    counter-reset: h5
+}
+ 
+.outline-h5 {
+    counter-reset: h6
+}
+ 
+.outline-h1>.outline-item>.outline-label:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+ 
+.outline-h2>.outline-item>.outline-label:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+ 
+.outline-h3>.outline-item>.outline-label:before {
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+ 
+.outline-h4>.outline-item>.outline-label:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+ 
+.outline-h5>.outline-item>.outline-label:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+ 
+.outline-h6>.outline-item>.outline-label:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>redis简易使用</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><blockquote><p><span>本文主要描述Redis大致的使用方式，为读者对Redis的使用有一定的全局观。更为细节的内容，可通过查询相关书籍或博客深入了解。</span></p></blockquote><blockquote><p><span>由于Redis很好地支持了大多数流行的编程语言，实际上大多在各自的程序中对Redis进行操作，因此，在了解Reids本身的操作后，另外需要花费少量时间了解对应语言对应的库的使用</span></p></blockquote><p><span>Redis为C语言的开源项目，若是已经对Redis又深入的了解，可通过阅读</span><a href='https://github.com/redis/redis' title='Redis源码'><span>Redis源码</span></a><span>获得更深层次的认识，或根据自身需求做修改（自用可以，但实际工作不建议随意修改）。</span></p><h3 id='1-基础知识'><span>1 基础知识</span></h3><h4 id='11-登录'><span>1.1 登录</span></h4><p><span>redis的命令不区分大小写。但之后的值匹配中需要注意大小写。</span>
+<span>启动可直接在终端输入 </span><code>redis-server</code><span>。或者通过脚本运行，该脚本在redis安装目录下的 </span><code>utils</code><span>文件夹中，名为 </span><code>redis_init_script</code><span>，在文件中可修改对应的配置信息，并重命名复制目录/etc/init.d，通过该脚本可启动一个redis实例，通过下方命令可设置开机启动</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sudo</span> update-rc.d 文件名 defaults</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>当复制多个文件，并修改为不同的端口号后，便可同时运行多个redis实例。默认的端口号为6379。</span>
+<span>启动后，首先登录redis:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[root@ ~]<span class="cm-comment"># redis-cli</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">127</span>.0.0.1:6379&gt; auth 密码</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">OK</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 63px;"></div><div class="CodeMirror-gutters" style="display: none; height: 63px;"></div></div></div></pre><p><span>终端输入</span><strong><span>redis-cli</span></strong><span>，开启redis，并输入自己的密码，否则无法操作。</span>
+<span>登录远程redis服务器：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-cli <span class="cm-attribute">-h</span> IP <span class="cm-attribute">-p</span> 端口号</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>需要停止时：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-cli shutdown</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><h4 id='12-插入与查询'><span>1.2 插入与查询</span></h4><p><span>Redis系统中，不同于MySQL之类的关系型数据库，不仅数据保存在内存中，且数据记录以字典结构保存（MySQL中的存储结构多为B+树的形式，但根据引擎的不同有所区别）。</span>
+<span>在MySQL中可以创建多个自定义命名的数据库，并在其中创建多个表，在表内存放一行行的数据。</span></p><ul><li><span>相反的，Redis默认的数据库为16个，且无法命名，只能使用从0开始的序号表示，在Redis的配置文件中可以自定义数据库的数量，配置参数为 </span><strong><span>database</span></strong><span>。</span></li><li><span>在Redis中没有表的概念，只有键，通过查询相对应的键，可获取键值的内容。</span></li></ul><p><span>为了记录信息，首先需选择对应的数据库，在数据库中创建新的键，再按照对应的方法插入数据。默认在登录的时候处于0数据库。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">select 数据库序号</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>查询数据库中存在的键，使用命令 </span><code>keys</code><span>，后跟匹配模式，例如 </span><strong><span>keys </span><span>*</span></strong><span> 显示所有键。</span></p><ul><li><span>由于键值的不同类型导致键的创建有所不同，下面给出不同类型的创建方式</span></li></ul><figure><table><thead><tr><th><span>类型</span></th><th><span>命令</span></th></tr></thead><tbody><tr><td><span>字符串</span></td><td><span>set 键名 键值</span></td></tr><tr><td><span>集合</span></td><td><span>sadd 键名 键值</span></td></tr><tr><td><span>散列表</span></td><td><span>hset 键名 域名 域值 </span><br><span>或</span><br><span> hmset 键名 域名 域值 域名 域值 </span>…</td></tr><tr><td><span>有序集合</span></td><td><span>zadd 键名 成员 分值</span></td></tr><tr><td><span>列表</span></td><td><span>lpush 或 rpush （从左边或右边推入新值）</span></td></tr></tbody></table></figure><ul><li><span>上述命令不仅用于创建新键，也可以为已有键添加新值</span></li><li><span>为获取键中的数据，根据不同的类型同样有着不同的命令。</span></li></ul><figure><table><thead><tr><th><span>类型</span></th><th><span>命令</span></th></tr></thead><tbody><tr><td><span>字符串</span></td><td><span>get 键名</span></td></tr><tr><td><span>集合</span></td><td><span>smembers 键名</span></td></tr><tr><td><span>散列表</span></td><td><span>hget 键名 域名 </span><br><span> 或</span><br><span> hgetall 键名（返回域名与对应的域值）</span><br><span> 或</span><br><span> hkeys 键名（返回所有的域键）</span></td></tr><tr><td><span>有序集合</span></td><td><span>zrange 键名 起始位置 结束位置 </span><br><span>或 </span><br><span> zrangebyscores 键名 分值下限 分值上限 </span><br><span> </span><span>[</span><span>withscores</span><span>]</span></td></tr><tr><td><span>列表</span></td><td><span>lrange 键名 起始位置 结束位置</span><br><span> 或</span><br><span> lindex 键名 位置</span></td></tr></tbody></table></figure><ul><li><span>为获取各个键中的元素长度，也需要不同的命令。</span></li></ul><figure><table><thead><tr><th><span>类型</span></th><th><span>命令</span></th></tr></thead><tbody><tr><td><span>字符串</span></td><td><span>strlen</span></td></tr><tr><td><span>集合</span></td><td><span>scard</span></td></tr><tr><td><span>散列表</span></td><td><span>hlen</span></td></tr><tr><td><span>有序集合</span></td><td><span>zcard</span></td></tr><tr><td><span>列表</span></td><td><span>llen</span></td></tr></tbody></table></figure><h4 id='13-删除与判断'><span>1.3 删除与判断</span></h4><p><span>通过上述的介绍，已经明显看出由于类型的不同导致命令的区别。同样的，对元素的删除，也需要不同的命令，以及判断键值中是否存在给定的值。</span>
+<span>删除操作：</span></p><figure><table><thead><tr><th><span>类型</span></th><th><span>命令</span></th><th><span>判断命令</span></th></tr></thead><tbody><tr><td><span>字符串</span></td><td><span>del 键名</span></td><td>&nbsp;</td></tr><tr><td><span>集合</span></td><td><span>srem 键名 给定值</span></td><td><span>sismeber 键名 给定值</span></td></tr><tr><td><span>散列表</span></td><td><span>hdel 键名 域名</span></td><td><span>hexists 键名 给定域名</span></td></tr><tr><td><span>有序集合</span></td><td><span>zrem 键名 成员名</span></td><td>&nbsp;</td></tr><tr><td><span>列表</span></td><td><span>lpop 或 rpop </span><br><span>（从左边或右边弹出元素）</span></td><td>&nbsp;</td></tr></tbody></table></figure><p><span>删除数据库中的键统一用 </span><code>del</code><span>操作</span></p><blockquote><p><span>但redis中只能一个个地删除，一旦需要删除一堆长相类似的键则需要结合Linux的命令</span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-cli <span class="cm-attribute">-a</span> 密码 <span class="cm-attribute">-n</span> 数据库序号 keys <span class="cm-string">'匹配模式'</span> | xargs redis-cli <span class="cm-attribute">-a</span> 密码 <span class="cm-attribute">-n</span> 数据库序号 del</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>最后，可用命令 </span><code>dbsize</code><span>查询当前数据库中键的数量。</span></p><h4 id='14-数据操作'><span>1.4 数据操作</span></h4><h5 id='141-加减'><span>1.4.1 加减</span></h5><p><span>|类型|加|减|</span>
+<span>|</span>–<span>|</span>–<span>|</span>
+<span>|字符串|incr 键名（加1）</span><br><span>或</span><br><span> incrby 键名 给定增量 </span><br><span> 或 </span><br><span> incrbyfloat 给定增量 </span><br><span> （对数值型的字符串操作）|decr 或 decrby|</span>
+<span>|集合|||</span>
+<span>|散列表|hincrby 或 hincrbyfloat||</span>
+<span>|有序集合|zincrby ||</span>
+<span>|列表|||</span></p><p><span>其中集合还包含交并集操作</span></p><figure><table><thead><tr><th><span>操作</span></th><th><span>并集</span></th><th><span>交集</span></th><th><span>差集</span></th></tr></thead><tbody><tr><td><span>简单命令</span></td><td><span>sunion</span></td><td><span>sinter</span></td><td><span>sdiff</span></td></tr><tr><td><span>结果保存</span></td><td><span>sunionstore 新集合键名</span><br><span> 键名1 键名2 </span>…</td><td><span>sinterstore</span></td><td><span>sdiffstore</span></td></tr></tbody></table></figure><h5 id='142-期限'><span>1.4.2 期限</span></h5><p><span>由于Redis的数据保存在内存中，企业大多用其存储热点信息。但考虑到内存容量和工作效率，需要对旧数据作清理，于是需要对数据设定一个存活时长，令数据在经历或到达一个时间后自发删除。</span></p><figure><table><thead><tr><th><span>命令</span></th><th><span>操作</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>expire</span></td><td><span>expire 键名 秒数</span></td><td><span>经历过对应的秒数后，该键删除</span></td></tr><tr><td><span>expireat</span></td><td><span>expireat 键名 时间戳</span></td><td><span>参数为UNIX时间戳，到达该时间后，删除该键</span></td></tr><tr><td><span>pexpire</span><br><span>pexpireat</span></td><td><span>与上面命令操作类似</span></td><td><span>时间参数以毫秒为单位</span></td></tr><tr><td><span>TTL</span></td><td><span>TTL 键名</span></td><td><span>返回该键的剩余时长</span></td></tr><tr><td><span>persist</span></td><td><span>persist 键名</span></td><td><span>取消键的期限设置</span></td></tr></tbody></table></figure><p><span>上述介绍了如何手动设置键的存活时长。但在实际中，例如微博或其它社交平台，总是会出现新的热点，而这些热点又很难确定何时消退热度，但为了保证内存不至于被这类所谓的热点塞满，需要系统自行删除一些数据。于是，就有了缓存策略。</span></p><ul><li><span>在配置文件中，修改 </span><strong><span>maxmemory</span></strong><span>参数，限制Redis可用的最大内存。修改 </span><strong><span>maxmemory-policy</span></strong><span> 参数，告诉Redis一旦使用内存到达给定的限制，将按照何种规则删除数据。</span></li></ul><p><span>规则如下：</span></p><figure><table><thead><tr><th><span>规则</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>volatile-lru</span></td><td><span>对设置了期限的键按照LRU算法删除一个</span></td></tr><tr><td><span>allkeys-lru</span></td><td><span>对任意键按照LRU删除一个</span></td></tr><tr><td><span>volatile-random</span></td><td><span>对具有期限的键随机删除一个</span></td></tr><tr><td><span>allkeys-random</span></td><td><span>随机删除一个键</span></td></tr><tr><td><span>volatile-ttl</span></td><td><span>删除过期时间最近的一个键</span></td></tr><tr><td><span>noeviction</span></td><td><span>不删除，只返回错误</span></td></tr></tbody></table></figure><p><span>其中，</span><strong><span>LRU</span></strong><span>(Least Recent Used)意为</span><strong><span>最近最少使用</span></strong><span>。</span></p><h5 id='143-排序'><span>1.4.3 排序</span></h5><ul><li><span>排序使用 </span><code>sort</code><span>进行操作。 </span><code>sort</code><span>支持列表、集合和有序集合的排序。且以对应的键值为基础排序，默认从小到大，且默认排序对象为数字。</span></li></ul><p><strong><span>sort</span></strong><span>的完整命令如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">SORT key [BY pattern] [LIMIT <span class="cm-builtin">start</span> count] [GET pattern] [ASC|DESC] [ALPHA] [STORE dstkey] </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>在介绍</span><strong><span>[</span><span>BY pattern</span><span>]</span></strong><span>之前，需要准备一个例子，</span>
+<span>数据库中存在三种键，</span></p><figure><table><thead><tr><th><span>类型</span></th><th><span>内容</span></th><th><span>组成</span></th></tr></thead><tbody><tr><td><span>列表</span></td><td><span>用户序号</span></td><td><span>uid：</span><span>[</span><span>1，2，3，4</span><span>]</span></td></tr><tr><td><span>字符串</span></td><td><span>用户名</span></td><td><span>user_name_1:admin</span><br><span> user_name_2:jack</span><br><span> user_name_3:pete</span><br><span> user_name_4:mary</span></td></tr><tr><td><span>字符串</span></td><td><span>用户等级</span></td><td><span>user_level_1:9999</span><br><span>user_level_2:10</span><br><span>user_level_3:25</span><br><span>user_level_4:70</span></td></tr></tbody></table></figure><p><span>这三种键实际是分类保存了用户的信息，而 </span><strong><span>uid</span></strong><span>常用来表示实际的用户。但为了获取该用户的其它信息，则需要与其它键建立关系，联系的方式，则是通过模式匹配键值</span></p><ul><li><span>BY</span>
+<span>比如说， 以下代码让 uid 键按照 user_level_{uid} 的大小来排序：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid BY user_level_*</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"2"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># jack , level = 10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"3"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># peter, level = 25</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"4"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># mary, level = 70</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"1"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># admin, level = 9999</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 105px;"></div><div class="CodeMirror-gutters" style="display: none; height: 105px;"></div></div></div></pre><p><span>user_level_* 是一个占位符， 它先取出 uid 中的值， 然后再用这个值来查找相应的键。</span></p><p><span>比如在对 uid 列表进行排序时， 程序就会先取出 uid 的值 1 、 2 、 3 、 4 ， 然后使用 user_level_1 、 user_level_2 、 user_level_3 和 user_level_4 的值作为排序 uid 的权重。</span></p><ul><li><span>LIMIT</span>
+<span>限定返回结果的数量</span></li><li><span>GET</span>
+<span>使用 GET 选项， 可以根据排序的结果来取出相应的键值。</span></li></ul><p><span>比如说， 以下代码先排序 uid ， 再取出键 user_name_{uid} 的值：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid GET user_name_*</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"admin"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"jack"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"peter"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"mary"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 105px;"></div><div class="CodeMirror-gutters" style="display: none; height: 105px;"></div></div></div></pre><p><strong><span>组合使用 BY 和 GET</span></strong>
+<span>通过组合使用 BY 和 GET ， 可以让排序结果以更直观的方式显示出来。</span></p><p><span>比如说， 以下代码先按 user_level</span><em><span>{uid} 来排序 uid 列表， 再取出相应的 user_name</span></em><span>{uid} 的值：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid BY user_level_* GET user_name_*</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"jack"</span> &nbsp; &nbsp; &nbsp; <span class="cm-comment"># level = 10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"peter"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># level = 25</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"mary"</span> &nbsp; &nbsp; &nbsp; <span class="cm-comment"># level = 70</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"admin"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># level = 9999</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 105px;"></div><div class="CodeMirror-gutters" style="display: none; height: 105px;"></div></div></div></pre><p><strong><span>获取多个外部键</span></strong>
+<span>可以同时使用多个 GET 选项， 获取多个外部键的值。</span></p><p><span>以下代码就按 uid 分别获取 user_level</span><em><span>{uid} 和 user_name</span></em><span>{uid} ：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid GET user_level_* GET user_name_*</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"9999"</span> &nbsp; &nbsp; &nbsp; <span class="cm-comment"># level</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"admin"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># name</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"10"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"jack"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">5</span>) <span class="cm-string">"25"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">6</span>) <span class="cm-string">"peter"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7</span>) <span class="cm-string">"70"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8</span>) <span class="cm-string">"mary"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 189px;"></div><div class="CodeMirror-gutters" style="display: none; height: 189px;"></div></div></div></pre><p><span>GET 有一个额外的参数规则，可以用 # 获取被排序键的值。</span></p><p><span>以下代码就将 uid 的值、及其相应的 user_level</span><em><span>* 和 user_name</span></em><span>* 都返回为结果：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid GET <span class="cm-comment"># GET user_level_* GET user_name_*</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"1"</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment"># uid</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"9999"</span> &nbsp; &nbsp; &nbsp; <span class="cm-comment"># level</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"admin"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># name</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"2"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">5</span>) <span class="cm-string">"10"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">6</span>) <span class="cm-string">"jack"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7</span>) <span class="cm-string">"3"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8</span>) <span class="cm-string">"25"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">9</span>) <span class="cm-string">"peter"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">10</span>) <span class="cm-string">"4"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">11</span>) <span class="cm-string">"70"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">12</span>) <span class="cm-string">"mary"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 273px;"></div><div class="CodeMirror-gutters" style="display: none; height: 273px;"></div></div></div></pre><p><span>获取外部键，但不进行排序</span>
+<span>通过将一个不存在的键作为参数传给 BY 选项， 可以让 SORT 跳过排序操作， 直接返回结果：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid BY not-exists-key</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"4"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"3"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"2"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"1"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 105px;"></div><div class="CodeMirror-gutters" style="display: none; height: 105px;"></div></div></div></pre><p><span>这种用法在单独使用时，没什么实际用处。</span></p><p><span>不过，通过将这种用法和 GET 选项配合， 就可以在不排序的情况下， 获取多个外部键， 相当于执行一个整合的获取操作（类似于 SQL 数据库的 join 关键字）。</span></p><p><span>以下代码演示了，如何在不引起排序的情况下，使用 SORT 、 BY 和 GET 获取多个外部键：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid BY not-exists-key GET <span class="cm-comment"># GET user_level_* GET user_name_*</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"4"</span> &nbsp; &nbsp; &nbsp;<span class="cm-comment"># id</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"70"</span> &nbsp; &nbsp; <span class="cm-comment"># level</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"mary"</span> &nbsp; <span class="cm-comment"># name</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"3"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">5</span>) <span class="cm-string">"25"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">6</span>) <span class="cm-string">"peter"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">7</span>) <span class="cm-string">"2"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">8</span>) <span class="cm-string">"10"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">9</span>) <span class="cm-string">"jack"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">10</span>) <span class="cm-string">"1"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">11</span>) <span class="cm-string">"9999"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">12</span>) <span class="cm-string">"admin"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 273px;"></div><div class="CodeMirror-gutters" style="display: none; height: 273px;"></div></div></div></pre><p><strong><span>将哈希表作为 GET 或 BY 的参数</span></strong>
+<span>除了可以将字符串键之外， 哈希表也可以作为 GET 或 BY 选项的参数来使用。</span></p><p><span>比如说，对于前面给出的用户信息表：</span></p><p><span>我们可以不将用户的名字和级别保存在 user_name</span><em><span>{uid} 和 user_level</span></em><span>{uid} 两个字符串键中， 而是用一个带有 name 域和 level 域的哈希表 user_info_{uid} 来保存用户的名字和级别信息：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; HMSET user_info_1 name admin level <span class="cm-number">9999</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">OK</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; HMSET user_info_2 name jack level <span class="cm-number">10</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">OK</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; HMSET user_info_3 name peter level <span class="cm-number">25</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">OK</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; HMSET user_info_4 name mary level <span class="cm-number">70</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">OK</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 231px;"></div><div class="CodeMirror-gutters" style="display: none; height: 231px;"></div></div></div></pre><p><span>之后， BY 和 GET 选项都可以用 key-&gt;field 的格式来获取哈希表中的域的值， 其中 key 表示哈希表键， 而 field 则表示哈希表的域：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid BY user_info_*-&gt;level</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"2"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"3"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"4"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"1"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis <span class="cm-number">127</span>.0.0.1:6379&gt; SORT uid BY user_info_*-&gt;level GET user_info_*-&gt;name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>) <span class="cm-string">"jack"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2</span>) <span class="cm-string">"peter"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3</span>) <span class="cm-string">"mary"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4</span>) <span class="cm-string">"admin"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 231px;"></div><div class="CodeMirror-gutters" style="display: none; height: 231px;"></div></div></div></pre><ul><li><span>[</span><span>ASC|DESC</span><span>]</span>
+<span>给定排序顺序</span></li><li><span>ALPHA</span>
+<span>当需要对字符串进行排序时， 需要显式地在 SORT 命令之后添加 ALPHA 修饰符：</span></li><li><span>STORE dstkey</span>
+<span>默认情况下， SORT 操作只是简单地返回排序结果，并不进行任何保存操作。</span></li></ul><p><span>通过给 STORE 选项指定一个 key 参数，可以将排序结果保存到给定的键上。</span></p><p><span>如果被指定的 key 已存在，那么原有的值将被排序结果覆盖。</span></p><p><span>可以通过将 SORT 命令的执行结果保存，并用 EXPIRE key seconds 为结果设置生存时间，以此来产生一个 SORT 操作的结果缓存。</span></p><p><span>这样就可以避免对 SORT 操作的频繁调用：只有当结果集过期时，才需要再调用一次 SORT 操作。</span></p><h3 id='2-事务操作'><span>2 事务操作</span></h3><h4 id='21-multi和exec'><span>2.1 multi和exec</span></h4><p><span>与常用数据库类似，事务指一组命令需要被原子执行。但Redis相对于MySQL之类的事务实现简单，也不强大，最重要的是Redis没有回滚操作。</span></p><ul><li><span>multi命令，表示事务的开始，在之后输入一系列操作命令</span></li><li><span>exec命令，代表事务的结束，之前的命令此时开始执行</span></li><li><span>若需要在写事务的中途退出，可输入命令 discard</span></li></ul><p><span>一旦在执行中，某个命令发生错误，则事务中断，但之前已做出的改变无法恢复，需要操作者自行修复。</span></p><h4 id='22-管道pipeline'><span>2.2 管道pipeline</span></h4><p><span>若需要在远程服务器上操作时，需要通过TCP协议建立联系，但是正常的通信总是需要信号不断往返，浪费时间，由此出现</span><strong><span>pipeline</span></strong><span>以实现单方面不间断发送命令。</span></p><ul><li><span>首先，建议在程序语言中操作pipeline()命令，在Redis中操作非常繁琐</span></li><li><span>若是需要输入事务命令，</span><code>pipeline()</code><span>的参数不输入或输入 </span><code>True</code><span>，则服务器认为接下来为事务，在命令队列中，将后续的命令包裹在 </span><code>multi</code><span>和 </span><code>exec</code><span>之间</span></li><li><span>若只是普通的命令，命令之间没有联系时，则 </span><code>pipeline()</code><span>的参数中输入 </span><code>False</code></li></ul><h4 id='23-watch'><span>2.3 watch</span></h4><p><span>由于在实际工作中，Redis需要时刻处理大量的操作，若是在事务操作中，其它客户端传入命令将部分数据已修改，则事务操作大概率会出现异常。于是，需要判断一些我们关心的数据是否在这期间被改动，使用命令 </span><code>watch</code><span>，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">watch 键名</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>在事务操作中，使用该命令相当于监视数据，一旦数据被改动，则事务中断。在执行到 </span><code>exec</code><span>后，会自动取消前面的监视，或用命令 </span><code>unwatch</code><span>取消。</span></p><h4 id='24-锁'><span>2.4 锁</span></h4><p><code>watch</code><span>作为乐观锁，并没有对修改数据的行为作阻止。下面将介绍Redis中悲观锁的使用。</span>
+<span>同其它地方的锁的构造相同，通过规定某个变量为锁的条件，只有进程对该变量完成某一操作后，才能进行自己的行为，否则则不断尝试（可设置尝试的时长期限）。</span></p><ul><li><span>构建锁。</span>
+<span>在Redis中利用命令 </span><code>setnx</code><span>，是 </span>“<span>SET if Not eXists</span>”<span>的简写，即仅当该键不存在时可以创建，并返回1，否则返回0。</span>
+<span>通过创建于删除键完成锁的获取与释放。</span></li><li><span>同样的，可以使用 </span><code>incr</code><span>、</span><code>set</code><span>等命令创建不同的锁的条件。</span></li><li><span>利用上述的锁机制，既可以针对键创建锁，也可以为键中的各个数值创建对应的锁，也称之为</span><strong><span>细粒度锁</span></strong><span>，通过将锁细化，能保证有更多的进程可以同时对数据库进行操作。</span></li><li><span>为防止进程奔溃导致锁未被释放而导致死锁现象，可对锁设置期限。</span></li></ul><h5 id='241-计数信号量'><span>2.4.1 计数信号量</span></h5><p><span>通过计数信号量，可限制进程数量，不同于锁的操作，当进程无法获得锁，则不断尝试，而信号量无法获取，则直接返回失败结果。</span>
+<span>为安全考虑，获得信号量的进程同样需要设置期限。</span></p><ul><li><span>不公平信号量</span>
+<span>假设所有机器的时间是相同的，则根据每个进程加入时的UNIX时间戳排名从中选择前几名获得信号量。</span>
+<span>具体操作为，使用有序集合，每个进程加入时获取一个随机序列值作为成员，携带的时间戳作为分值，根据信号量的个数结合进程的排名选择对应的进程。在挑选时，首先删除有序集合中那些达到期限的进程，再进行排名，未被选中的则被删除。</span>
+<span>如果机器的时间是不同的，那么有些进程天然地比其它进程具有优势。</span></li><li><span>公平信号量</span>
+<span>不同于前面利用系统的时间戳，为了避免自身系统的问题。公平信号量为自己设置了一个计数器，利用自增操作描述前后顺序，每个进程加入时，对计数器进行操作，并得到计数器当时的值，作为一个时间标志。其它操作类似。</span></li></ul><h3 id='3-安全机制'><span>3 安全机制</span></h3><p><span>由于内存一旦断电则数据消失，为保证数据安全 ，首先需要将数据在硬盘中保存备份，称之为持久化。</span></p><h4 id='31-持久化'><span>3.1 持久化</span></h4><h5 id='311-快照持久化'><span>3.1.1 快照持久化</span></h5><p><span>这种方式是直接将整个存储复制到硬盘中，并有两种命令：</span></p><figure><table><thead><tr><th><span>命令</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>bgsave</span></td><td><span>Redis创建一个进程负责复制</span></td></tr><tr><td><span>save</span></td><td><span>Redis将暂时停止响应命令</span></td></tr></tbody></table></figure><ol start='' ><li><span>配置文件中设置</span><code>save 60 10000</code><span>，代表从最后一次创建快照算起，若60秒内有10000次写入，则触发bgsave命令。</span></li><li><span>若是多个Redis服务器之间通信时，一方向对方发送 </span><code>sync</code><span>命令，对方若是最近没有执行快照操作，则执行</span><code>bgsave</code><span>命令。</span></li></ol><h5 id='312-aof持久化append-only-file）'><span>3.1.2 AOF持久化（Append Only File）</span></h5><p><span>由于每次数据的变化都需要利用写命令进行修改，因此，只需要从头到尾保存所有的写命令即可，通过从头到尾执行一遍就可以获得对应的结果。</span>
+<span>首先使用</span><strong><span>AOF</span></strong><span>功能需要在配置文件中修改</span><strong><span>appendonly</span></strong><span>的参数为yes，默认为no。</span>
+<span>此外，还有对应的AOF缓冲区同步文件策略，由</span><strong><span>appendfsync</span></strong><span>参数控制，</span></p><figure><table><thead><tr><th><span>配置参数</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>always</span></td><td><span>每个命令都需要同步写入硬盘（安全但效率低）</span></td></tr><tr><td><span>everysec</span></td><td><span>每秒执行一次同步，显式地将写命令同步到硬盘</span></td></tr><tr><td><span>no</span></td><td><span>不主动同步，由系统控制（通常30秒同步一次）</span></td></tr></tbody></table></figure><p><span>由于AOF文件包含大量的记录，导致文件大小不断膨胀，可通过删减其中的部分记录，减小所需的存储空间，称为</span><strong><span>重写</span></strong><span>，为此也可以在配置文件中设置何时执行，</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>auto-aof-rewrite-percentage</span></td><td><span>指明当文献大小与上次重写前的大小百分比达到指定值，后重写</span></td></tr><tr><td><span>auto-aof-rewrite-min-size</span></td><td><span>文件大小达到指定值，则重写</span></td></tr></tbody></table></figure><p><span>除了这类自动重写的配置外，还可以通过发送命令 </span><code>bgrewriteaof</code><span>手动执行重写。</span></p><p><strong><span>重写的实现</span></strong>
+<span>实际的重写操作不会对原本的文件做分析，而是根据当前的情况，将当前的状况重新写一遍，并删除了之前对键的各种操作，直接用最后的结果代替。</span></p><h4 id='32-内存优化'><span>3.2 内存优化</span></h4><p><span>所谓的内存优化，实际对数据结构的优化。Redis中的数据均以列表、集合等数据结构形式保存，这类结构有时为了搜索效率的考虑需要附带额外的信息，导致实际的存储大小远比实际的数据量要大。</span>
+<span>为此，当一个数据结构中的数据量较小时，采用额外的数据结构保存，丧失部分的效率，减小存储量。当数据量增大到影响效率后，再恢复到正常的结构。</span></p><p><span>基于上述的介绍，Redis中对于各个类型值的编码存在多种内部编码，根据用户的需求，可在配置文件中修改，不同编码的应用实时机。</span></p><figure><table><thead><tr><th><span>数据类型</span></th><th><span>内部编码方式</span></th><th><span>编码结果</span></th></tr></thead><tbody><tr><td><span>字符串</span></td><td><span>REDIS_ENCODING_RAW</span></td><td><span>raw</span></td></tr><tr><td>&nbsp;</td><td><span>REDIS_ENCODING_INT</span></td><td><span>int</span></td></tr><tr><td>&nbsp;</td><td><span>REDIS_ENCODING_EMBSTR</span></td><td><span>embstr</span></td></tr><tr><td><span>散列</span></td><td><span>REDIS_ENCODING_HT</span></td><td><span>hashtable</span></td></tr><tr><td>&nbsp;</td><td><span>REDIS_ENCODING_ZIPLIST</span></td><td><span>ziplist</span></td></tr><tr><td><span>列表</span></td><td><span>REDIS_ENCODING_LINKEDLIST</span></td><td><span>linkedlist</span></td></tr><tr><td>&nbsp;</td><td><span>REDIS_ENCODING_ZIPLIST</span></td><td><span>ziplist</span></td></tr><tr><td><span>集合</span></td><td><span>REDIS_ENCODING_HT</span></td><td><span>hashtable</span></td></tr><tr><td>&nbsp;</td><td><span>REDIS_ENCODING_INTSET</span></td><td><span>intset</span></td></tr><tr><td><span>有序集合</span></td><td><span>REDIS_ENCODING_SKIPLIST</span></td><td><span>skiplist</span></td></tr><tr><td>&nbsp;</td><td><span>REDIS_ENCODING_ZIPLIST</span></td><td><span>ziplist</span></td></tr></tbody></table></figure><ul><li><span>字符串</span>
+<span>当大小不超过39字节，内部采用REDIS_ENCODING_EMBSTR编码，当对该值做修改时，会将其转化为REDIS_ENCODING_RAW编码。</span></li><li><span>散列类型</span>
+<span>可在配置文件中设定不同编码的使用时机。</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hash-max-ziplist-entries 参数值</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hash-max-ziplist-value 参数值</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><p><span>当散列类型键的字段个数少于hash-max-ziplist-entries参数值且每个字段名和字段值的长度都小于 hash-max-ziplist-value 参数值（单位为字节）时，</span>
+<span>Redis 就会使用 REDIS_ENCODING_ZIPLIST 来存储该键，否则就会使用 REDIS_ENCODING_HT。</span>
+<span>转换过程是透明的，每当键值变更后Redis都会自动判断是否满足条件来完成转换。</span></p><ul><li><span>列表类型</span>
+<span>列表类型的内部编码方式可能是 REDIS_ENCODING_LINKEDLIST或 REDIS_ENCODING_ZIPLIST。</span>
+<span>同样在配置文件中可以定义使用REDIS_ENCODING_ZIPLIST方式编码的时机：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">list-max-ziplist-entries 参数值</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">list-max-ziplist-value 参数值</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><ul><li><span>集合类型</span>
+<span>集合类型的内部编码方式可能是 REDIS_ENCODING_HT 或 REDIS_ENCODING_INTSET。</span>
+<span>当集合中的所有元素都是整数且元素的个数小于配置文件中的set-max-intset-entries参数指定值（默认是512）时</span>
+<span>Redis会使用REDIS_ENCODING_INTSET编码存储该集合，否则会使用REDIS_ENCODING_HT来存储。</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set-max-intset-entries 参数值</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><ul><li><span>有序集合</span>
+<span>有序集合类型的内部编码方式可能是 REDIS_ENCODING_SKIPLIST 或REDIS_ENCODING_ZIPLIST。</span>
+<span>同样在配置文件中可以定义使用REDIS_ENCODING_ZIPLIST方式编码的时机：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">zset-max-ziplist-entries 参数值</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">zset-max-ziplist-value 参数值</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><hr /><blockquote><p><span>其中，Redis对于字符串，数字等常量值是作为共享值处理，即同样的字符串，它们的地址是相同的。但是，当对Redis的使用内存设置的限制，则不再共享，因为需要为每个值记录其使用率等信息，这涉及到Redis中内存的管理细节。</span>
+<span>关于Redis内存的其它细节，可深入了解Redis的内存机制。</span></p></blockquote><hr /><h3 id='4-分布式'><span>4 分布式</span></h3><h4 id='41-主从链'><span>4.1 主从链</span></h4><p><span>当业务规模较为庞大后，单台服务器同时完成读写操作较为困难，此时需要将负载分配到多个服务器上。为了保证数据的一致性，读操作可以由多个服务器分担，而写操作则需要一个服务器负责，其它服务器从该服务器获取数据副本。由此，产生主、从关系。</span></p><ul><li><span>创建从属服务器。命令 </span><code>slaveof</code><span>，若服务器A试图同步服务器B的数据，则A为B的从属服务器。</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">服务器A&gt; slaveof 服务器B的IP 端口</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>或者在配置文件中，对参数 </span><code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code><span>进行配置，</span>
+<span>若是主服务器被密码保护，则对参数 </span><code>masterauth &lt;master-password&gt;</code><span>进行配置。</span></p><p><span>此时A开始复制B的数据，若是需要停止复制，命令如下，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">服务器A&gt; slaveof no one</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>通过 </span><code>info replication</code><span>命令可查看是否与对应的主或从服务器连接，及其它信息。</span></p><h5 id='411-哨兵setinel'><span>4.1.1 哨兵（Setinel)</span></h5><p><span>在主从链中，一个主节点下面有若干个从节点。若主节点出现故障而下线，则最好在从节点中尽快选举出新的主节点，并且保证只有一个从节点转变为主节点。为实现自动化，让系统自动发现故障并修复，则出现</span><strong><span>哨兵</span></strong><span>。</span>
+<span>在设置哨兵后，主从链的每个节点都可以由一个哨兵定期检查，一旦发现主节点故障，多个哨兵会一起协商，推举出新的主节点，并通知用户或客户端。</span></p><ul><li><span>主从链配置</span>
+<span>前面所述的主从链的配置相对简单，适合学习时操作。实际上，节点可能根据自身情况做不同的配置，则最好在各自的配置文件中操作。</span>
+<span>在配置文件 </span><strong><span>redis.conf</span></strong><span>可以配置对应的IP、端口，以及日志和相关的文件目录。</span>
+<span>另外，为方便起见，不同节点的文件，最好在文件名上有所标注，如标注对应的端口号之类的信息。</span>
+<strong><span>主节点</span></strong>
+<span>文件：redis-6379.conf</span>
+<span>配置：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bind 127.0.0.1 其它IP</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">port 6379</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">daemonize yes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">logfile "6379.log"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dbfilename "dump-6379.rdb"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dir "给定目录"</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 126px;"></div><div class="CodeMirror-gutters" style="display: none; height: 126px;"></div></div></div></pre><p><span>启动主节点：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-server redis-6379.conf</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><strong><span>从节点</span></strong>
+<span>文件：redis-6380.conf（端口号可自行决定）</span>
+<span>配置：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">port <span class="cm-number">6380</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bind <span class="cm-number">127</span>.0.0.1 其它IP</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">daemonize <span class="cm-builtin">yes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">logfile <span class="cm-string">"6380.log"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dbfilename <span class="cm-string">"dump-6380.rdb"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dir <span class="cm-string">"目录"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">slaveof <span class="cm-number">127</span>.0.0.1或其它IP <span class="cm-number">6379</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 147px;"></div><div class="CodeMirror-gutters" style="display: none; height: 147px;"></div></div></div></pre><p><span>若是本机上不同端口对应的不同Redis实例，可用127.0.0.1，若是不同机器上的，则需要指明对应的IP地址</span>
+<span>同样利用前述的方式启动</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-server redis-6380.conf</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><ul><li><span>部署Sentinel节点</span>
+<span>Sentinel节点与普通的Redis节点类似，只是缺少持久化等额外的功能。Redis中存在相关的配置文件 </span><strong><span>sentinel.conf</span></strong><span>。</span>
+<span>与上述节点的配置类似，</span>
+<span>文件：redis-sentinel-26379.conf（文件名表明是哨兵节点，以及其端口号，可自定义端口）</span>
+<span>配置：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">port <span class="cm-number">26379</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">bind IP</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">daemonize <span class="cm-builtin">yes</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">logfile <span class="cm-string">"26379.log"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">dir 目录</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel monitor mymaster IP 端口 个数</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel down-after-milliseconds mymaster 毫秒数</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel parallel-syncs mymaster 个数</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel failover-timeout mymaster 秒数</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel auth-pass &lt;master-name&gt; &lt;password&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel notification-script &lt;master-name&gt; &lt;script-path&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 252px;"></div><div class="CodeMirror-gutters" style="display: none; height: 252px;"></div></div></div></pre><p><span>其中，</span><strong><span>sentinel monitor mymaster</span></strong><span>指，监控IP:端口所对应的Redis节点，若是需要判断主节点故障，则需要至少给定个数的哨兵都同意才可以。</span>
+<span>下面的几个参数，根据其名字可知，</span><strong><span>down-after-milliseconds mymaster</span></strong><span>大致为超过给定时间未获得回复，则认为其下线；</span><strong><span>parallel-syncs mymaster</span></strong><span>指，当设置了新的主节点后，每次向该主节点发起复制操作的从节点的个数；</span><strong><span>failover-timeout mymaster</span></strong><span>为故障转移超时时限，通常是对主节点做故障切换时，若是超过该时限，则认为切换失败，其中，若是本次切换失败，下一次会将时限扩大为双倍。</span>
+<strong><span>notification-script</span></strong><span>，当发生某些警告级别的Sentinel事件，会触发对应目录上的脚本；</span>
+<strong><span>client-reconfig-script</span></strong><span>，在故障转移结束后，会触发对应路径的脚本，并向脚本发送故障转移结果的相关参数，当启用该功能时，配置如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;master-name&gt; &lt;role&gt; &lt;state&gt; &lt;from-ip&gt; &lt;from-port&gt; &lt;to-ip&gt; &lt;to-port&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><strong><span>启动哨兵</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-sentinel redis-sentinel-26379.conf</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>或者</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-server redis-sentinel-26379.conf <span class="cm-attribute">--sentinel</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><h4 id='42-集群'><span>4.2 集群</span></h4><p><span>前面的主从链主要通过对数据进行复制，保证数据的安全性。但是当数据本身非常巨大，导致单个服务器已无法妥善保存，则需要多个机器共同保存，由此产生集群。</span>
+<span>集群的第一个问题是，数据以何种规则保存在哪个机器上，将机器组成的集群抽象化后，即为在一个大的存储空间上进行分区，问题转化为资源与分区的分配。</span>
+<span>常用的方法有：节点取余分区，一致性哈希分区，虚拟槽分区（Redis采用此方法）。</span></p><ul><li><span>Redis分区方法：</span>
+<span>Redis Cluster的槽（slot)数为0~16383，节点（即机器）均匀分配一定量的槽数。当键值通过哈希算法对应到槽的序号后，分配到对应的节点再到达对应的槽中。其中哈希计算公式为：</span>
+<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="26.603ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 11758.6 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-52-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-52-TEX-I-1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path id="MJX-52-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-52-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-52-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-52-TEX-I-1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path><path id="MJX-52-TEX-I-1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path id="MJX-52-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-52-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-52-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-52-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path id="MJX-52-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-52-TEX-I-1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-52-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-52-TEX-N-26" d="M156 540Q156 620 201 668T302 716Q354 716 377 671T401 578Q401 505 287 386L274 373Q309 285 416 148L429 132L437 142Q474 191 543 309L562 341V349Q562 368 541 376T498 385H493V431H502L626 428Q709 428 721 431H727V385H712Q688 384 669 379T639 369T618 354T603 337T591 316T578 295Q537 223 506 176T464 117T454 104Q454 102 471 85T497 62Q543 24 585 24Q618 24 648 48T682 113V121H722V112Q721 94 714 75T692 32T646 -7T574 -22Q491 -19 414 42L402 51L391 42Q312 -22 224 -22Q144 -22 93 25T42 135Q42 153 46 169T55 197T74 225T96 249T125 278T156 308L195 347L190 360Q185 372 182 382T174 411T165 448T159 491T156 540ZM361 576Q361 613 348 646T305 679Q272 679 252 649T232 572Q232 497 255 426L259 411L267 420Q361 519 361 576ZM140 164Q140 103 167 64T240 24Q271 24 304 36T356 61T374 77Q295 156 235 262L220 292L210 310L193 293Q177 277 169 268T151 229T140 164Z"></path><path id="MJX-52-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-52-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D460" xlink:href="#MJX-52-TEX-I-1D460"></use></g><g data-mml-node="mi" transform="translate(469,0)"><use data-c="1D459" xlink:href="#MJX-52-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(767,0)"><use data-c="1D45C" xlink:href="#MJX-52-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(1252,0)"><use data-c="1D461" xlink:href="#MJX-52-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(1890.8,0)"><use data-c="3D" xlink:href="#MJX-52-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2946.6,0)"><use data-c="1D436" xlink:href="#MJX-52-TEX-I-1D436"></use></g><g data-mml-node="mi" transform="translate(3706.6,0)"><use data-c="1D445" xlink:href="#MJX-52-TEX-I-1D445"></use></g><g data-mml-node="mi" transform="translate(4465.6,0)"><use data-c="1D436" xlink:href="#MJX-52-TEX-I-1D436"></use></g><g data-mml-node="mn" transform="translate(5225.6,0)"><use data-c="31" xlink:href="#MJX-52-TEX-N-31"></use><use data-c="36" xlink:href="#MJX-52-TEX-N-36" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(6225.6,0)"><use data-c="28" xlink:href="#MJX-52-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(6614.6,0)"><use data-c="1D458" xlink:href="#MJX-52-TEX-I-1D458"></use></g><g data-mml-node="mi" transform="translate(7135.6,0)"><use data-c="1D452" xlink:href="#MJX-52-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(7601.6,0)"><use data-c="1D466" xlink:href="#MJX-52-TEX-I-1D466"></use></g><g data-mml-node="mo" transform="translate(8091.6,0)"><use data-c="29" xlink:href="#MJX-52-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(8480.6,0)"><use data-c="26" xlink:href="#MJX-52-TEX-N-26"></use></g><g data-mml-node="mn" transform="translate(9258.6,0)"><use data-c="31" xlink:href="#MJX-52-TEX-N-31"></use><use data-c="36" xlink:href="#MJX-52-TEX-N-36" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-52-TEX-N-33" transform="translate(1000,0)"></use><use data-c="38" xlink:href="#MJX-52-TEX-N-38" transform="translate(1500,0)"></use><use data-c="33" xlink:href="#MJX-52-TEX-N-33" transform="translate(2000,0)"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mi>l</mi><mi>o</mi><mi>t</mi><mo>=</mo><mi>C</mi><mi>R</mi><mi>C</mi><mn>16</mn><mo stretchy="false">(</mo><mi>k</mi><mi>e</mi><mi>y</mi><mo stretchy="false">)</mo><mi mathvariant="normal">&amp;</mi><mn>16383</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex"> slot=CRC16 (key) \& 16383 </script>
+<span>该方法能解耦数据与节点的关系，方便扩展。</span></li></ul><p><span> </span><strong><span>集群功能的限制</span></strong></p><blockquote><p><span>1）key批量操作支持有限。如mset、mget，目前只支持具有相同slot值的key执行批量操作。对于映射为不同slot值的key由于执行mget、mget等操作可能存在于多个节点上因此不被支持。</span>
+<span>2）key事务操作支持有限。同理只支持多key在同一节点上的事务操作，当多个key分布在不同的节点上时无法使用事务功能。</span>
+<span>3）key作为数据分区的最小粒度，因此不能将一个大的键值对象如hash、list等映射到不同的节点。</span>
+<span>4）不支持多数据库空间。单机下的Redis可以支持16个数据库，集群模式下只能使用一个数据库空间，即db0。</span>
+<span>5）复制结构只支持一层，从节点只能复制主节点，不支持嵌套树状复制结构。</span></p></blockquote><h5 id='421-配置'><span>4.2.1 配置</span></h5><p><span>首先创建并启动若干个Redis节点。</span>
+<span>每个节点的配置文件中设置参数</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 节点端口</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">port 6379#随意</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 开启集群模式</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster-enabled yes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 节点超时时间，单位毫秒</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster-node-timeout 15000#可修改</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># 集群内部配置文件</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster-config-file "nodes-端口号.conf"</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 168px;"></div><div class="CodeMirror-gutters" style="display: none; height: 168px;"></div></div></div></pre><p><span>在第一次启动后，会根据 </span><code>cluster-config-file</code><span>的设置创建一个集群配置文件。</span>
+<span>每个节点会生成一个40位的16进制的字符串作为节点ID，保存在各自的集群配置文件中。利用命令 </span><code>cluster nodes</code><span>可查看该集群节点的状态。</span>
+<strong><span>当前，所有启动的节点并没有组成一个集群</span></strong></p><ul><li><span>节点握手</span>
+<span>从一个节点开始，向其它节点发送命令，让对方获悉自身的存在，当该节点与其它节点均建立联系后，所有节点会自发与其它节点均建立联系。节点之间使用Gossip协议通信。</span>
+<span>握手命令如下：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster meet IP 端口</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><ul><li><span>分配槽</span>
+<span>命令 </span><code>cluster addslots</code><span>，使用如下：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-cli <span class="cm-attribute">-h</span> <span class="cm-number">127</span>.0.0.1 <span class="cm-attribute">-p</span> 端口1 cluster addslots {0...5461}</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-cli <span class="cm-attribute">-h</span> <span class="cm-number">127</span>.0.0.1 <span class="cm-attribute">-p</span> 端口2 cluster addslots {5462...10922}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">redis-cli <span class="cm-attribute">-h</span> <span class="cm-number">127</span>.0.0.1 <span class="cm-attribute">-p</span> 端口3 cluster addslots {10923...16383}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 63px;"></div><div class="CodeMirror-gutters" style="display: none; height: 63px;"></div></div></div></pre><p><span>为保证数据安全，同样可以设置主从链，命令 </span><code>cluster replicate</code><span>，使用如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">IP:端口&gt;cluster replicate 节点ID</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><h5 id='422-集群伸缩'><span>4.2.2 集群伸缩</span></h5><ul><li><span>扩展</span>
+<span>当新节点加入后，由于槽数固定，则原本的节点需要将自身的部分槽转移给新节点。假设新节点为A，另外已有节点B，以A和B的通信为例，介绍数据如何进行转移。</span>
+<span>操作如下，</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#1. B向A发送命令，让A做好导入某个槽的数据的准备</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster setslot {槽序号} importing {A-NodeId}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#2. A向B发送命令，让B准备导出某个槽的数据</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster setslot {槽序号} migrating {B-NodeId}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#3. B循环执行命令，获得某个槽的若干个键</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster getkeysinslot {槽序号} {键的个数}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#4. B执行命令，把上述获取的键通过管道发送给A</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">migrate {A-Ip} {A-Port} <span class="cm-string">""</span> <span class="cm-number">0</span> {timeout} keys {keys...}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#重复执行 3和4，直到该槽内的键全部转移完</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#5. 向集群所有节点发送命令，表示对应槽的位置改变</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">cluster setslot {槽序号} <span class="cm-builtin">node</span> {A-NodeId}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 231px;"></div><div class="CodeMirror-gutters" style="display: none; height: 231px;"></div></div></div></pre><ul><li><span>集群收缩</span>
+<span>当节点退出时，将采用类似的命令将自身的槽转移到剩余节点中。</span></li></ul><h4 id='5-缓存优化'><span>5 缓存优化</span></h4><p><span>正如之前已经提及的，实际中的使用常用Redis作为缓存部分，而存储层则使用MySQL等持久层的工具管理。由于存储层的工作效率远低于缓存，因此对于大规模的访问，更希望由缓存负责。如果实际运行后，出现大量的访问需要动用到存储层，不但意味着缓存的设计有问题，也会有极大的可能导致系统宕机。</span></p><ul><li><span>穿透优化</span>
+<span>当一个搜索在缓存中无法命中，随后到达存储层中，同样没有命中，如果这一现象非常多，则对存储层造成极大的压力。为解决这一问题，最简单的是，对于查询失败的信息，在缓存中保存一个结果，同时为防止这类信息过多，为其设置过期时限；另外，可设置布隆过滤器，详细的信息可自行搜索，主要思想为，在正式向缓存搜索前，先对搜索问题做过滤，将一些可能没有结果的问题拒绝查询。</span></li><li><span>无底洞优化</span>
+<span>由于数据量的增大，导致集群的节点数量也需要增长，而节点数量的增长，也导致需要搜索的键保存在不同的节点上，当需要搜索多个键时，需要在不同节点上进行搜索。此时，节点数量的增加，导致增加的网络时延和执行时间的增加反而降低效率。</span>
+<span>没有具体的解决方案，根据场景，可通过并行编程，hash_tag等方式优化。hash_tag将多个键强制保存到对应节点上。</span></li></ul></div></div>
+</body>
+</html>

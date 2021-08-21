@@ -1,0 +1,866 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+
+/*
+ * Default theme，适用于 core/mweb-base.scss。
+ * 取值参考 chrome 默认样式：
+ * https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/html.css
+ * 所有 import "core/mweb-base.scss" 的文件都应该同时导入此变量文件。
+ */
+/* color */
+/* font & line */
+/* boxing */
+/* elememts */
+/* color */
+/* prism & pre */
+/* font */
+/* header */
+/* spacing */
+/* table */
+/*
+ * 基准样式，相当于 reset.css，使主题在不同平台下有统一的表现。
+ * 各个属性的默认值为 chrome 的默认样式，见 variables/default.scss。
+ */
+:root {
+  --text-color: #1f2329;
+  --bg-color: white;
+  --side-bar-bg-color: white;
+  --active-file-bg-color: white;
+  --window-border: 0 solid white;
+  --control-text-color: #1f2329;
+  --primary-color: #3370ff;
+  --primary-btn-border-color: #3370ff;
+  --active-file-border-color: #3370ff;
+  --primary-btn-text-color: #3370ff;
+  --item-hover-text-color: #3370ff;
+  --meta-content-color: #3370ff;
+  --search-select-text-color: #3370ff;
+  --heading-char-color: #3370ff;
+}
+
+#write {
+  line-height: 1.68;
+  -webkit-text-size-adjust: 100%;
+  max-width: 860px;
+  margin: 0px auto;
+  padding: 1.6rem 3.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, Segoe UI, PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 16px;
+  color: #1f2329;
+  /* spacing */
+  /* block */
+  /* list */
+  /* inline */
+  /* table */
+}
+#write * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#write > *:first-child {
+  margin-top: 0 !important;
+}
+#write > *:last-child {
+  margin-top: 0 !important;
+}
+#write p, #write details, #write dl, #write ol, #write ul, #write xmp, #write plaintext, #write listing, #write blockquote, #write table, #write figure, #write hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+#write h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h5 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h6 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write p {
+  margin-left: 0;
+  margin-right: 0;
+}
+#write pre, #write xmp, #write plaintext, #write listing {
+  font-family: var(--monospace);
+}
+#write blockquote > :first-child {
+  margin-top: 0;
+}
+#write blockquote > :last-child {
+  margin-bottom: 0;
+}
+#write hr {
+  border-style: inset;
+  border-width: 1px;
+}
+#write img {
+  max-width: 100%;
+  height: auto;
+}
+#write li {
+  word-wrap: break-all;
+}
+#write li + li {
+  margin-top: 4px;
+}
+#write ul ul, #write ol ul, #write ul ol, #write ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#write .task-list-item {
+  list-style-type: none;
+}
+#write a {
+  color: #3370ff;
+  text-decoration: underline;
+}
+#write a img {
+  border: none;
+}
+#write b, #write strong {
+  font-weight: bold;
+}
+#write i, #write cite, #write em, #write var, #write address, #write dfn {
+  font-style: italic;
+}
+#write code, #write kbd, #write tt, #write samp {
+  font-family: var(--monospace);
+}
+#write mark {
+  color: #1f2329;
+  padding: 0.2em 0;
+  background-color: rgba(255, 246, 122, 0.8);
+}
+#write del, #write s {
+  color: inherit;
+}
+#write table {
+  color: black;
+  border-collapse: collapse;
+  background-color: white;
+  border-spacing: 2px;
+  font-size: 1em;
+}
+#write th, #write td {
+  border-color: #dee0e3;
+  border-width: 1px;
+  border-style: solid;
+}
+#write th {
+  padding: 8px 8px;
+  font-size: 1em;
+  font-weight: 500;
+}
+#write td {
+  padding: 8px 8px;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+#write * {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+  line-height: 1.4;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0.37em;
+}
+#write blockquote {
+  display: block;
+  margin-left: 0;
+  padding-left: 14px;
+  border-left: 2px solid #3370ff;
+  color: rgba(31, 35, 41, 0.7);
+}
+#write code {
+  border-radius: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border: 1px solid #dee0e3;
+  background-color: #f5f6f7;
+  word-spacing: normal;
+  line-height: 1.6;
+  padding: 0 2px;
+}
+#write pre.md-fences,
+#write pre.md-meta-block {
+  border: 1px solid #dee0e3;
+  background-color: #f5f6f7;
+  border-radius: 3px;
+  padding: 10px;
+}
+#write a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  hyphens: auto;
+  word-break: break-word;
+  text-decoration: none;
+}
+#write a:hover {
+  text-decoration: underline;
+}
+#write hr {
+  margin: 13px 0 12px;
+  border: 0px;
+  height: 1px;
+  background-origin: content-box;
+  background-image: linear-gradient(90deg, #bbbfc4, #bbbfc4);
+  background-repeat: no-repeat;
+}
+#write ul {
+  margin-left: 0;
+  padding-left: 22px;
+  list-style: none;
+}
+#write ul > li:not([class*=task-list-item]) {
+  word-wrap: break-all;
+  padding-left: 0px;
+}
+#write ul > li:not([class*=task-list-item]):before {
+  position: absolute;
+  top: 2px;
+  content: "•";
+  color: #3370ff;
+  display: inline-block;
+  margin-left: -20px;
+  margin-right: 20px;
+  width: 0px;
+  font-size: 0.8em;
+  transform: scale(1.25);
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+#write ul > li:not([class*=task-list-item]) li:not([class*=task-list-item])::before {
+  content: "◦";
+  transform: scale(1);
+  font-weight: 700;
+}
+#write ul > li:not([class*=task-list-item]) li:not([class*=task-list-item]) li:not([class*=task-list-item])::before {
+  content: "▪";
+  transform: scale(1.25);
+  font-weight: normal;
+}
+#write ol {
+  counter-reset: ol_counter;
+  margin-left: 0;
+  padding-left: 22px;
+  list-style: none;
+}
+#write ol > li:not([class*=task-list-item]) {
+  word-wrap: break-all;
+  padding-left: 0px;
+  position: relative;
+}
+#write ol > li:not([class*=task-list-item]):before {
+  content: counter(ol_counter) ".";
+  counter-increment: ol_counter;
+  color: #3370ff;
+  position: absolute;
+  margin-left: -22px;
+  margin-right: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 18px;
+  border-radius: 2px;
+  transform: translateX(-2px);
+  font-family: Helvetica Neue, Consolas;
+}
+#write li + li, #write ul ul, #write ol ul, #write ul ol, #write ol ol, #write li ul, #write li ol {
+  margin-top: 4px;
+}
+#write .task-list-item {
+  padding-left: 0.3rem;
+}
+#write .task-list-item > p {
+  transition: color 0.3s, opacity 0.3s;
+}
+#write .task-list-item.task-list-done > p {
+  color: #646a73;
+  text-decoration: line-through;
+}
+#write .task-list-item.task-list-done > p > .md-emoji {
+  opacity: 0.5;
+}
+#write .task-list-item.task-list-done > p > .md-link > a {
+  opacity: 0.6;
+}
+#write .task-list-item > input {
+  -webkit-appearance: initial;
+  display: block;
+  position: absolute;
+  border: 1px solid #2b2f36;
+  border-radius: 0.25rem;
+  margin-left: -1.5rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  transition: border-color 0.3s;
+}
+#write .task-list-item > input:focus {
+  outline: none;
+  box-shadow: none;
+}
+#write .task-list-item > input:hover {
+  border-color: #3370ff;
+}
+#write .task-list-item > input[checked]::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 60%;
+  width: 2px;
+  transform: rotate(40deg);
+  background: #3370ff;
+}
+#write .task-list-item > input[checked]::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 25%;
+  height: 30%;
+  width: 2px;
+  transform: rotate(-40deg);
+  background: #3370ff;
+}
+
+#write strong {
+  color: #245bdb;
+}
+/**************************************
+ * Header Counters in Content
+ **************************************/
+ 
+/** initialize css counter */
+#write {
+    counter-reset: h1
+}
+ 
+h1 {
+    counter-reset: h2
+}
+ 
+h2 {
+    counter-reset: h3
+}
+ 
+h3 {
+    counter-reset: h4
+}
+ 
+h4 {
+    counter-reset: h5
+}
+ 
+h5 {
+    counter-reset: h6
+}
+ 
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+ 
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+ 
+#write h3:before, h3.md-focus.md-heading:before { /*override the default style for focused headings */
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+ 
+#write h4:before, h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+ 
+#write h5:before, h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+ 
+#write h6:before, h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+ 
+/** override the default style for focused headings */
+#write>h3.md-focus:before, #write>h4.md-focus:before, #write>h5.md-focus:before, #write>h6.md-focus:before, h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+.sidebar-content {
+    counter-reset: h1
+}
+ 
+.outline-h1 {
+    counter-reset: h2
+}
+ 
+.outline-h2 {
+    counter-reset: h3
+}
+ 
+.outline-h3 {
+    counter-reset: h4
+}
+ 
+.outline-h4 {
+    counter-reset: h5
+}
+ 
+.outline-h5 {
+    counter-reset: h6
+}
+ 
+.outline-h1>.outline-item>.outline-label:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+ 
+.outline-h2>.outline-item>.outline-label:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+ 
+.outline-h3>.outline-item>.outline-label:before {
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+ 
+.outline-h4>.outline-item>.outline-label:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+ 
+.outline-h5>.outline-item>.outline-label:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+ 
+.outline-h6>.outline-item>.outline-label:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+
+
+</style><title>Linux shell编写基础</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>为编写Linux上的Shell脚本，需要对Linux系统上的一些常用的操作命令有所了解，这里不会专门进行介绍。但是，在编写中也能大致了解各种命令的使用方式。</span></p><h3 id='1-简要介绍'><span>1 简要介绍</span></h3><p><span>在Linux上的脚本语言几乎默认为bash，其实还有其它这类的Shell语言，但是bash在这其中属于功能齐全且易学的。其文件以 </span><strong><span>.sh</span></strong><span>为结尾，原本有一个Shell语言就是叫sh，最初运行在Unix系统上，而bash则是容纳了sh的所有命令并有所扩充。因此，sh和bash在Unix上是两种不同的语言。那么在Linux上则无需考虑过多。</span></p><p><span>至于文件的编写，网上或书本可能会介绍eclipse等编辑器，又或是介绍windows上的一些脚本模拟器。但实际上，如果需要彻底地了解Linux的编程，最好租用一个Linux的服务器，不需要太高的性能，价格也不会太贵，既可以使用Linux上的vi/vim编辑器，也可以直接运行操作，如果不习惯vim类的编辑器，直接用windows的文本编辑器也是完全可以的。</span></p><h3 id='2-脚本基础操作'><span>2 脚本基础操作</span></h3><h4 id='21-编写'><span>2.1 编写</span></h4><p><span>在编写最开始，首先要表明这是一个bash语言的脚本，在文件第一行写上，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>因为bash包含了sh语言，也可以写</span><code>#!/bin/sh</code><span>。不过最好按上述的内容写。</span><code>#!</code><span>后跟的是解释器，针对语言的不同，可填写不同程序语言的对应目录。</span></p><p><span>其次，符号 </span><code>#</code><span>作为注释符号存在，不直接参与命令操作。</span></p><p><span>为了脚本能输出内容，采用命令 </span><code>echo</code><span>后跟需要输出的内容，最好带双引号。</span></p><p><span>在完成编写后，首先需要更改文件权限，默认这类文件无法执行，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">chmod</span> <span class="cm-operator">+</span>x 文件名或目录</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>运行脚本，只需要在文件目录前加上点 </span><code>.</code><span>，假设存在一个文件 </span><strong><span>/usr/bin/test.sh</span></strong><span>，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">./usr/bin/test.sh</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>若是当前目录在</span><strong><span>bin</span></strong><span>中，则直接用命令 </span><code>./test.sh</code><span>执行。此时，即使未设置执行权限，也可用命令 </span><code>source 文件名</code><span>执行脚本。</span></p><h4 id='22-变量'><span>2.2 变量</span></h4><p><span>bash中的变量属于动态型，不需要事先指明类型，类似python这类语言。变量基本上就是整数型与字符串型，但本质上都是字符串型。</span>
+<span>使用时，自定义变量名并赋值后，使用时需要在变量名前加上符号 </span><code>$</code><span>，例如，输出数字或字符串，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-def">$$</span> number</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-def">$$string</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><p><span>需注意的是，赋值时 </span><code>=</code><span>两边不能有空格。此外，</span><code>=</code><span>右边可以不加值，即赋值为空；也可以不事先声明变量而直接引用，但是前面的变量通过 命令 </span><code>set</code><span>可显示出所有存在的变量，没有事先声明的变量是不会出现的。若是需要消除脚本中定义的变量，通过 </span><code>unset 变量名</code><span>实现。</span>
+<span>引用时，若是变量名存在可能的歧义，可使用花括号 </span><code>{}</code><span>将其包含在内。</span></p><ul><li><span>声明变量</span>
+<span>除了上述的直接将字符串或数值赋值外，还可通过符号 </span><strong><span>`</span><span>`</span></strong><span> 将一串命令或脚本文件目录包裹其中，结果将被赋值给变量。</span>
+<span>使用花括号</span><strong><span>{</span><span>}</span></strong><span>，除了作为变量名的定界符，还可以拼接字符串，如 </span><code>字符串1{字符串a,字符串b，...}字符串2</code><span>。</span>
+<span>除了在文件中对变量赋值，还可以在脚本运行时，由用户通过键盘输入自定义的值，命令为 </span><code>read 变量名</code><span>，例如，</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"输入值"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">read var</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> {I am,<span class="cm-def">$var</span>}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><p><span>运行后，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; <span class="cm-builtin">source</span> 脚本</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">输入值</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">a superman</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">I am a superman</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><p><span>当输入时不加上双引号，则中间的空格全都视为一个空格。</span>
+<span>其次，前面的例子中提示用户 ‘输入值’，可将该值合并到 </span><code>read</code><span>命令中，</span><code>read -p 提示信息 变量名</code><span>，提示信息可以用引用变量替代。</span></p><p><span>有时需要限制用户的输入时间，则用命令 </span><code>read -t 秒数 -n 字符个数 -p &quot;快点写且不要多写&quot;  变量</code><span>，该命令除了指定时限，也指定了输入的个数，当字符数足够后将自动退出。</span></p><p><span>另外，</span><code>read</code><span>包括选项 </span><code>-r</code><span>允许输入反斜杠 ，</span><code>-d</code><span>后跟一个双引号括起来的符号，作为输入行的定界符。</span>
+<span>在使用中，会发现在输入密码时，系统总是不做显示，使用的是选项 </span><code>-s</code><span>，为静默模式。</span></p><p><span>由于bash的变量本质是字符串，上述定义的变量即使赋值了数字，首先也是作为字符串处理，但同时的是，bash又会当字符串在做数值运算时尝试看作数字。</span>
+<span>为了明确变量为数字，使用命令 </span><code>declare -i 变量名</code><span>。</span></p><p><span>最后，还可设置变量仅可读，</span><code>readonly 变量 赋值</code><span> 或者 </span><code>declare -r 变量 赋值</code><span>，此后，变量不可更改，也不可取消定义。为显示所有只读变量，使用命令 </span><code>readonly -p</code><span>或 </span><code>declare -rp</code><span>。</span><code>declare -p</code><span>可显示变量的属性和值。</span></p><blockquote><p><span>除了自定义变量外，还存在系统的环境变量，即系统中本身就存在的变量，在脚本中可直接引用，可查询一些常用的环境变量。或者用 </span><code>set</code><span>显示出当前系统中存在的所有的环境变量，可能有非常多。最好根据需要查询是否存在对应的环境变量。</span></p></blockquote><ul><li><span>数值运算</span>
+<span>对于赋值为数字的变量，如果只是简单的将变量做运算，系统会将变量视为字符串操作。</span></li></ul><p><span>为了保证是作为数字操作，需将运算放在命令 </span><code>let</code><span>后。</span>
+<span>或者放在 </span><code>$(())</code><span>的括号中，其中</span><code>$(())</code><span>的结果也可赋值给变量，若是使用 </span><code>expr</code><span> 后跟着表达式来计算时，则不需要里面的小括号。</span></p><h5 id='221-数组'><span>2.2.1 数组</span></h5><p><span>bash支持数组，但支持一维数组。数组内元素需保证类型统一。</span></p><ul><li><span>声明</span>
+<span>使用圆括号，或使用 </span><code>read -a</code><span>，元素用空格分隔，例如，</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">y</span><span class="cm-operator">=</span>(1 <span class="cm-number">2</span> <span class="cm-number">3</span>)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">read <span class="cm-attribute">-a</span> y <span class="cm-comment">#输入 1 2 3</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><p><code>readarray</code><span> 与 </span><code>mapfile</code><span>同样可以将键盘输入作为数组，不同点在于，这两个命令以行为分隔。</span></p><ul><li><span>引用</span>
+<span>通过命令 </span><code>${数组名[*]}</code><span> 可以得到数组的所有元素，通过 </span><code>${#数组名[*]}</code><span> 可以得到数组元素的个数，使用某一元素，使用 </span><code>${数组名[序号]}</code><span>。</span></li></ul><p><span>此外可通过命令 </span><code>declare -a</code><span>创建数组，不需要在创建时指明元素。类似于不同的编程，可在之后针对各个下标赋值，同时下标可不连续。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">declare <span class="cm-attribute">-a</span> w</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">w[1]<span class="cm-operator">=</span><span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">w[3]<span class="cm-operator">=</span><span class="cm-number">4</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#或者</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">w</span><span class="cm-operator">=</span>([1]<span class="cm-operator">=</span><span class="cm-number">1</span> [3]<span class="cm-operator">=</span><span class="cm-number">4</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 105px;"></div><div class="CodeMirror-gutters" style="display: none; height: 105px;"></div></div></div></pre><p><code>${#w[*]}</code><span>显示元素个数，</span><code>${w[*]}</code><span>显示所有元素的值， </span><code>${!w[*]}</code><span>显示数组的所有下标， </span><code>${w[@]}</code><span>同样显示所有元素的值，不同在于，</span><code>${w[*]}</code><span>将结果作为字符串输出，而后者将结果按空格分隔一个个输出。</span></p><p><span>最后，同样可用 </span><code>readonly</code><span> 或 </span><code>declare -ar</code><span>声明只读数组。</span></p><ul><li><span>关联数组</span>
+<span>使用命令 </span><code>declare -A</code><span>创建数组后，数组的下标不仅可以是数字，也可以是字符串。实际上，使得数组称为一个哈希表。</span>
+<code>declare -Ap</code><span>可显示当前所有的关联数组。</span></li></ul><p><span>关于</span><code>declare</code><span>的其它命令，可使用 </span><code>declare --help</code><span>查看。</span></p><h4 id='23-引号'><span>2.3 引号</span></h4><p><span>其中反引号 </span><strong><span>`</span><span>`</span></strong><span> 已介绍是用来包括命令，如 </span><code>date</code><span>等。</span>
+<span>单引号 </span><code>&#39;&#39;</code><span>，内部的字符全都看作普通字符。</span>
+<span>双引号 </span><code>&quot;&quot;</code><span>，对符号 </span><code>$</code><span>，</span><code>\</code><span>，</span><code>&#39;`，`&quot;</code><span>仍保存其特殊功能，其它的作为普通字符。特殊的是，双引号中的单引号中的内容若存在特殊符号仍具有功能。下面举例，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">a</span><span class="cm-operator">=</span><span class="cm-string">'sd'</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-def">$$a</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#sd</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'$$a'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#$$a</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">b</span><span class="cm-operator">=</span><span class="cm-string">"a is </span><span class="cm-def">$$a$ </span><span class="cm-string">'</span><span class="cm-def">$$a</span><span class="cm-string">' "</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-def">$$b</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#a is sd 'sd'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'$$b'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#$$b</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"</span><span class="cm-def">$$b</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#a is sd 'sd'</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 420px;"></div><div class="CodeMirror-gutters" style="display: none; height: 420px;"></div></div></div></pre><h4 id='24-参数'><span>2.4 参数</span></h4><p><span>类似系统的许多命令，本身可能就是一个脚本，且这些脚本可以处理我们给定的各种参数。为此，这里需要介绍，脚本如何处理外部给定的各种参数，同时，脚本内部也可以处理内部参数。外部参数从1开始编号。</span></p><figure><table><thead><tr><th><span>变量名</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>$0</span></td><td><span>当前脚本名称</span></td></tr><tr><td><span>$n</span></td><td><span>外部的第n个参数，但需注意达到10个后，</span><br><span>无法简单的这样指定参数（在3.2节中有方法）</span></td></tr><tr><td><span>$#</span></td><td><span>外部参数的个数</span></td></tr><tr><td><span>$</span><span>*</span></td><td><span>以“参数1参数2参数3……”的形式返回所有参数的值</span></td></tr><tr><td><span>$@</span></td><td><span>以“参数1”“参数2”“参数3”……的形式返回所有参数的值</span></td></tr><tr><td><span>$</span><span>_</span></td><td><span>保存之前执行的命令的最后一个参数</span></td></tr></tbody></table></figure><h4 id='25-反斜线'><span>2.5 反斜线(</span><span>\</span><span>)</span></h4><p><span>反斜线可屏蔽特殊符号的作用。</span>
+<span>打印八进制字符时，也需要在前面加上反斜线，否则作为普通数字处理。（使用 </span><code>echo -e</code><span>激活转义字符）</span>
+<span>使用计算命令 </span><code>expr</code><span>，直接用 </span><code>*</code><span>表示乘法会出现错误，需要使用 </span><code>\*</code><span>。</span></p><h4 id='26-管道'><span>2.6 管道</span></h4><p><span>当一组命令前后的结果和输入变量是连通的，则将前后的命令语句用管道 </span><code>|</code><span>连接起来。</span></p><ul><li><span>浮点数计算</span>
+<span>使用 </span><code>bc</code><span>计算，</span><code>sacle</code><span>表示计算后小数点后的位数，</span><code>&quot;scale=位数;表达式|bc&quot;</code><span>，例如，</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; <span class="cm-builtin">echo</span> <span class="cm-string">"scale=8;sqrt(2)|bc"</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1</span>.41421356</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><!--nextpage--><h3 id='3-判断循环和函数'><span>3 判断、循环和函数</span></h3><h4 id='31-判断'><span>3.1 判断</span></h4><ul><li><span>if</span>
+<span>格式：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> 条件1</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">elif</span> 条件2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">elif</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">else</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">fi</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 273px;"></div><div class="CodeMirror-gutters" style="display: none; height: 273px;"></div></div></div></pre><p><span>条件判断的表达式可放在方括号中 </span><code>[]</code><span>。</span>
+<span>条件可设置为任意命令语句，只要该语句能够返回成功与否的结果。</span>
+<span>其中，一些常用的比较大小的语句如下，</span></p><figure><table><thead><tr><th><span>作用</span></th><th><span>语句</span></th><th><span>全称</span></th></tr></thead><tbody><tr><td><span>大于</span></td><td><span>-gt</span></td><td><span>greater than</span></td></tr><tr><td><span>小于</span></td><td><span>-lt</span></td><td><span>less than</span></td></tr><tr><td><span>大于或等于</span></td><td><span>-ge</span></td><td><span>greater than or equal</span></td></tr><tr><td><span>小于或等于</span></td><td><span>-le</span></td><td><span>less than or equal</span></td></tr><tr><td><span>不相等</span></td><td><span>-ne</span></td><td><span>not equal</span></td></tr></tbody></table></figure><ul><li><span>case</span>
+<span>格式：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">case 值 <span class="cm-keyword">in</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模式1)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">模式2)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>.</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">esac</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">done</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 273px;"></div><div class="CodeMirror-gutters" style="display: none; height: 273px;"></div></div></div></pre><p><span>特殊模式，</span></p><figure><table><thead><tr><th><span>模式</span></th><th><span>作用</span></th></tr></thead><tbody><tr><td><span>*</span></td><td><span>任意字符</span></td></tr><tr><td><span>？</span></td><td><span>任意单字符</span></td></tr><tr><td><span>[</span>…<span>]</span></td><td><span>给定范围</span></td></tr><tr><td><span>A</span><span>|</span><span>B</span></td><td><span>A或B</span></td></tr><tr><td><span>#### 3.2 循环</span></td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><span>for</span>
+<span>格式：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> 变量 <span class="cm-keyword">in</span> 列表</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">done</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><p><span>其中列表可由 </span><code>&quot;$@&quot;</code><span>替代，或省略，此时变量将从外部参数中取值。</span></p><ul><li><span>until</span>
+<span>格式：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">until</span> 条件</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">done</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><ul><li><span>while</span>
+<span>格式：</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">while</span> 条件</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>命令</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">done</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><p><span>当条件由符号 </span><code>:</code><span>代替，则代表死循环。</span></p><p><strong><span>Shell的循环中也包含 break和continue命令，用法与常用方式相同</span></strong></p><p><strong><span>参数传递</span></strong></p><ul><li><span>shift</span>
+<span>当外部参数超过9个，若是使用 </span><code>$10</code><span>指定参数，则系统只会识别为 </span><code>$1 0</code><span>，即指定为第一个参数。可使用 </span><code>${10}</code><span>指定对应参数，但为了方便循环操作，还是需要 </span><code>shift</code><span>命令。</span>
+<span>为导入全部的参数，需要将前面已在脚本内保存的外部参数移除，于是剩余的外部参数则不断前移，通过循环指定 </span><code>$1</code><span>即可导入全部外部参数。</span></li></ul><p><span>该命令使用非常简单，写入一个 </span><code>shift</code><span>则将外部参数的头部位置右移一个位置，也可通 </span><code>shift 位置数</code><span>指定迁移间隔。</span>
+<span>若只是需要获取最后一个外部参数可用命令，</span><code>eval echo \$$#</code><span> 或 </span><code>shift &#39;expr $# -2&#39;</code><span>。</span></p><ul><li><span>getopts</span>
+<span>在使用系统命令时，经常遇到命令后面跟着不同的选项，这些选项前面都附带着 </span><code>-</code><span>符号。命令 </span><code>getopts</code><span>将捕获脚本后面跟的参数选项，并在脚本内进行比较判断。</span>
+<span>假设脚本具有多个参数选项，例如 </span><code>-a</code><span>，</span><code>-b</code><span>，则编写例子如下，</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 输出参数索引</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"OPTIND starts at </span><span class="cm-def">$$OPTIND</span><span class="cm-string"> $"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string">#OPTIND： getopts使用OPTIND作为索引，来处理下一个需要处理的参数，记录当前的状态。</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#OPTARG： 在循环中，a，b两个参数后面各有一个冒号，冒号表示该输入的参数后面还有一个参数值，当getopts发现冒号后，会处理用户输入的参数值，这个参数值被保存在OPTARG中。</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 接收参数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">while</span> getopts :a:b: optname</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">do</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>case <span class="cm-string">"</span><span class="cm-def">$$optname</span><span class="cm-string"> $" in</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>"</span>a<span class="cm-string">")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-builtin">echo</span> <span class="cm-string">"Option </span><span class="cm-def">$$optname</span><span class="cm-string"> </span><span class="cm-def">$ is</span><span class="cm-string"> specified"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-string">"b"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-builtin">echo</span> <span class="cm-string">"Option </span><span class="cm-def">$$optname</span><span class="cm-string"> </span><span class="cm-def">$ has</span><span class="cm-string"> value </span><span class="cm-def">$$OPTARG</span><span class="cm-string"> $"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-string"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-string">"?"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-builtin">echo</span> <span class="cm-string">"Unknown option </span><span class="cm-def">$$OPTARG</span><span class="cm-string"> $"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-string"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-string">":"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-builtin">echo</span> <span class="cm-string">"No argument value for option </span><span class="cm-def">$$OPTARG</span><span class="cm-string"> $"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-string"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>*)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-comment"># Should not occur</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-builtin">echo</span> <span class="cm-string">"Unknown error while processing options"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>;;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-keyword">esac</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-builtin">echo</span> <span class="cm-string">"OPTIND is now </span><span class="cm-def">$$OPTIND</span><span class="cm-string"> $"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string">done</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 609px;"></div><div class="CodeMirror-gutters" style="display: none; height: 609px;"></div></div></div></pre><p><span>上述代码的重点在 </span><code>:a:b:</code><span>，第一个</span><code>:</code><span>指忽略错误信息，当出现错误后，不会显示相关信息，即进入静默模式。而 </span><code>a</code><span>或</span><code>b</code><span>的这类参数选项后跟着</span><code>:</code><span>则意味着该选项后面还会跟着一个参数，如指定一个目录或其它信息，若没有此类信息，则不需要</span><code>:</code><span>。</span></p><h4 id='33-函数'><span>3.3 函数</span></h4><p><span>在脚本内定义函数，有以下两种格式，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> 函数名</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>操作</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#或</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">函数名()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>操作</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 189px;"></div><div class="CodeMirror-gutters" style="display: none; height: 189px;"></div></div></div></pre><p><span>区别在于，使用 </span><code>function</code><span>，后面的函数名之后可以不添加小括号。启动函数，直接使用函数名即可。与常用语言类似，通过 </span><code>return</code><span>可产生返回值，且只能返回0~255内的整数值。</span></p><ul><li><span>参数</span>
+<span>相比于脚本的外部参数，函数后面也可以跟着多个参数，同样视为该函数的外部参数，用法与脚本外部参数的相似，使用 </span><code>$n</code><span>可引用函数的第n个外部参数。因此不同区域使用 </span><code>$n</code><span>意味着不同位置的外部参数，距离如下，</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#------------func_len.sh-----------</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#! /bin/bash</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">length()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 接收参数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">str</span><span class="cm-operator">=</span><span class="cm-def">$1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">result</span><span class="cm-operator">=</span><span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> [ <span class="cm-string">"</span><span class="cm-def">$str</span><span class="cm-string">"</span> !<span class="cm-operator">=</span> <span class="cm-string">""</span> ]; <span class="cm-keyword">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 计算字符串长度</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">result</span><span class="cm-operator">=</span><span class="cm-def">${#str}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">fi</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 将长度值写入标准输出</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"</span><span class="cm-def">$result</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 调用函数</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">str</span><span class="cm-operator">=</span><span class="cm-string">"123456"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">len</span><span class="cm-operator">=</span><span class="cm-quote">$(length </span><span class="cm-def">$str</span><span class="cm-quote">)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 输出执行结果</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"the string &nbsp;</span><span class="cm-def">$1</span><span class="cm-string">'s length is </span><span class="cm-def">$len</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"</span><span class="cm-def">$1</span><span class="cm-string"> length </span><span class="cm-quote">$(length </span><span class="cm-def">$1</span><span class="cm-quote">)</span><span class="cm-string">"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 420px;"></div><div class="CodeMirror-gutters" style="display: none; height: 420px;"></div></div></div></pre><p><span>运行，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; ./func_len <span class="cm-number">123</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">the string <span class="cm-number">123456</span><span class="cm-string">'s length is 6</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">123</span> length <span class="cm-number">3</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 63px;"></div><div class="CodeMirror-gutters" style="display: none; height: 63px;"></div></div></div></pre><ul><li><span>变量和别名</span>
+<span>可通过命令 </span><code>declare -g</code><span>定义全部变量。</span>
+<span>若是参数为数组，假设</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">func()</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">a</span><span class="cm-operator">=</span>(1 <span class="cm-number">2</span> <span class="cm-number">3</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">func <span class="cm-string">"</span><span class="cm-def">${a[@]}</span><span class="cm-string">"</span><span class="cm-comment">#导入数组元素</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 126px;"></div><div class="CodeMirror-gutters" style="display: none; height: 126px;"></div></div></div></pre><p><span>为显示当前的函数名，可使用 </span><code>$FUNCNAME</code><span>引用，当内部嵌套着多个函数，则</span><code>$FUNCNAME</code><span>作为数组，保存多个函数名。</span>
+<span>有时函数本身名字较为复杂，可为其设置别名</span>
+<code>alias 别名=&quot;命令&quot;</code>
+<span>别名的使用可适用任何命令语句。</span></p><p><span>类似的，有时变量本身保存的是另一个变量的名字，如何适用变量真正的值，操作如下，</span>
+<span>假设</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">A</span><span class="cm-operator">=</span>B<span class="cm-comment">#B是个变量名</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">B</span><span class="cm-operator">=</span><span class="cm-string">"真正的值"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">${A}</span><span class="cm-comment">#结果是B</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">${!A}</span><span class="cm-comment">#结果为"真正的值"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 84px;"></div><div class="CodeMirror-gutters" style="display: none; height: 84px;"></div></div></div></pre><h5 id='331-库文件'><span>3.3.1 库文件</span></h5><p><span>当已有写好的脚本，可让其它脚本在内部使用其功能，方式为</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#-------------ku_test.sh--------</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">. 一个脚本文件目录 &nbsp; &nbsp; <span class="cm-comment">#中间有空格</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#假设该库文件有一个函数 func()</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#则直接调用</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">func <span class="cm-comment">#如同内部写好的一个函数一样使用</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 126px;"></div><div class="CodeMirror-gutters" style="display: none; height: 126px;"></div></div></div></pre><h3 id='4-屏幕输出'><span>4 屏幕输出</span></h3><p><span>在脚本中，使用命令 </span><code>tput</code><span>，并附带各种命令，对屏幕输出做出相应的操作。具体可查看附录</span><a href="#tput"><span>tput命令</span></a><span>。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">变量名<span class="cm-operator">=</span><span class="cm-string">"tput 命令名"</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>通过输出对应的变量名，可完成对应的命令操作。</span>
+<span>例如，利用脚本完成清屏操作，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">CLEAR</span><span class="cm-operator">=</span><span class="cm-string">"<span class="cm-tab" role="presentation" cm-text="	"> </span>tput clear"</span> <span class="cm-comment">#定义一个清屏的变量</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$CLEAR</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 63px;"></div><div class="CodeMirror-gutters" style="display: none; height: 63px;"></div></div></div></pre><p><span>上述只是为演示操作，实际上，若是上向 </span><code>clear</code><span>这类系统命令，可直接在脚本中当作已有函数使用。</span>
+<span>通过在终端输入命令 </span><code>infocmp $TERM</code><span>可显示全部的tput命令。</span></p><ul><li><span>颜色改变</span>
+<span>通过输出 </span><code>echo -e &quot;\033[背景值;前景值m&quot;</code><span>，可将当前屏幕的输出字符转变对应的颜色。详细的颜色值，可查看附录</span><a href="#i-2"><span>颜色值</span></a><span>。</span></li></ul><h3 id='5-进程'><span>5 进程</span></h3><p><span>关于进程的知识，脚本并没有太多额外的知识，大多是Linux本身关于进程的命令。</span>
+<span>最重要且关键的两个是，启动一个程序和终止程序。Linux启动程序的方式就是在对应目标的目录前加上一个点 </span><code>.</code><span>，或者将一条Linux的启动某程序的命令赋值给一个字符串变量，引用该变量则运行了该命令。终止则是命令 </span><code>kill pid</code><span>，pid可通过命令 </span><code>ps</code><span>或 </span><code>top</code><span> 查看当前运行的进程的相关信息。</span></p><p><span>后台运行，在终端输入一条命令后，最后尾部加上符号</span><code>&amp;</code><span>后，该命令会放在后台运行。</span>
+<span>使用命令 </span><code>jobs</code><span>可查看当前后台的命令，包括运行与暂停的。这些后台的命令，会显示着自身的作业号。</span>
+<span>这些作业号有的会附带着符号 </span><code>+</code><span>或 </span><code>-</code><span>。</span><code>+</code><span>代表最近的（最新）的作业或当前作业，</span><code>-</code><span>代表前一个作业。</span></p><p><span>前台，为了将前述的后台中的暂停的命令继续执行，则使用命令 </span><code>fg 作业号</code><span>，</span></p><figure><table><thead><tr><th><span>引 用</span></th><th><span>所指的后台作业</span></th><th><span>引 用</span></th><th><span>所指的后台作业</span></th></tr></thead><tbody><tr><td><span>%N</span></td><td><span>编号为 N 的作业</span></td><td><span>%+</span></td><td><span>最近的被放在后台的作业</span></td></tr><tr><td><span>%string</span></td><td><span>命令以 string 开头的作业</span></td><td><span>%%</span></td><td><span>同上</span></td></tr><tr><td><span>%?string</span></td><td><span>命令包含 string 的作业</span></td><td><span>%-</span></td><td><span>第二近的被放在后台的作业</span></td></tr></tbody></table></figure><p><span>如果某个命令并没有一开始设定为后台运行，但是在运行期间被终止，也可以通过 </span><code>jobs</code><span>查看它当前的作业号。使用命令 </span><code>bg</code><span>可以将对应的命令转移到后台执行。</span></p><p><span>如果，需要将后台的命令终止，除了简单地用命令 </span><code>kill 命令对应的pid</code><span>，或者 </span><code>kill %作业号</code><span>。有时，简单的 </span><code>kill</code><span>无法彻底终止命令，则需要执行强制终止，使用命令 </span><code>kill -s SIGKILL pid或%作业号</code><span>，其中 </span><code>SIGKILL</code><span>是传递的信号。实际上命令</span><code>kill</code><span>不仅简单的执行终止进程，也可以向进程发送各种信号，使用命令 </span><code>kill -l</code><span>可显示可用的各种信号。常用的信号如下，</span></p><figure><table><thead><tr><th><span>信 号</span></th><th><span>作 用</span></th></tr></thead><tbody><tr><td><span>信号 1，SIGHUP</span></td><td><span>挂起——关闭进程通信连接</span></td></tr><tr><td><span>信号 2，SIGINT</span></td><td><span>中断——通知进程退出（&lt;Ctrl+C&gt;键）</span></td></tr><tr><td><span>信号 3，SIGQUIT</span></td><td><span>退出——强制进程退出（&lt;Ctrl+</span><span>&gt;</span><span>键）</span></td></tr><tr><td><span>信号 6，SIGABRT</span></td><td><span>放弃进程</span></td></tr><tr><td><span>信号 9，SIGKILL</span></td><td><span>终止进程，该信号不能被截获</span></td></tr><tr><td><span>信号 15，SIGTERM</span></td><td><span>软件终止，kill 默认信号，通知进程中运行的程序退出</span></td></tr><tr><td><span>信号 20，SIGTSTP</span></td><td><span>挂起正在运行的进程（&lt;Ctrl+Z&gt;键）</span></td></tr></tbody></table></figure><p><span>与上述的命令类似，还有命令</span><code>wait</code><span>，使得只有等待某个进程执行完才可以做其它动作。</span>
+<span>在前面已介绍了 </span><code>kill</code><span>可以传输不同的信号。存在一个命令 </span><code>trap</code><span>可在获得对应的信号后执行对应的操作，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">trap <span class="cm-string">"命令"</span> 信号</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>其它的还有 </span><code>suspend</code><span>，</span><code>disown</code><span>等命令。</span></p><h3 id='6-文本处理'><span>6 文本处理</span></h3><p><span>关于文本处理，需要且非常重要的是了解正则表达式，关于这一知识的介绍已非常多，这里不做介绍。</span>
+<span>通过正则表达式，我们可以匹配我们需要的可能的结果。常用的过滤命令 </span><code>grep &quot;正则匹配模式&quot;</code><span>。</span>
+<span>系统中可对某个文件内的内容做过滤，如下，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">grep</span> [选项] 匹配模式 文件目录</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>针对文本的处理有许多命令，如提取内容的命令 </span><code>cut</code><span>，合并文件内容的 </span><code>paste</code><span>，以及类似的命令 </span><code>join</code><span>，又或者转换字符的命令 </span><code>tr</code><span>。</span>
+<span>也存在文本格式化的命令，如指定内容宽度的 </span><code>fold</code><span>，或是作用较复杂的 </span><code>fmt</code><span>，或是反转字符顺序的 </span><code>rev</code><span>，又或是转化为打印格式的 </span><code>pr</code><span>等。</span>
+<code>nl</code><span>可为文本添加行号。</span><code>wc</code><span>可对文本进行各种统计。</span></p><ul><li><span>排序（sort)</span>
+<code>sort</code><span>默认排序为字典排序。</span></li></ul><figure><table><thead><tr><th><span>选项</span></th><th><span>作用</span></th></tr></thead><tbody><tr><td><span>-r</span></td><td><span>逆序</span></td></tr><tr><td><span>-R</span></td><td><span>随机排序</span></td></tr><tr><td><span>-u</span></td><td><span>排序的同时，排除重复项</span></td></tr><tr><td><span>-n</span></td><td><span>按数值排序</span></td></tr><tr><td><span>-k 正整数</span></td><td><span>文本若存在多个列，以对应正整数的列为基准排序</span></td></tr><tr><td><span>-o</span></td><td><span>将排序的结果输入到指定文件中</span></td></tr></tbody></table></figure><ul><li><span>流编辑</span>
+<span>当文本文件本身巨大时，直接编辑时非常困难。流编辑的命令为 </span><code>sed</code><span>，该命令会将标准输入的内容或文本内容按行处理，即将内容一行行地复制到缓存中，每次仅对各行做处理。</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sed</span> [选项] [脚本] [文本文件]</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>其中脚本是编写的sed脚本文件，内部包含一系列 </span><code>sed</code><span>命令，输入的内容将按照内部的命令执行相关操作。并且sed脚本文件的第一行为 </span><strong><span>#!/bin/sed</span></strong><span>。</span>
+<span>如果不指定文本文件，则从标准输入中读取内容。</span></p><figure><table><thead><tr><th><span>选项</span></th><th><span>作用</span></th></tr></thead><tbody><tr><td><span>-n</span></td><td><span>取消默认输出</span></td></tr><tr><td><span>-e</span></td><td><span>允许执行多个脚本</span></td></tr><tr><td><span>-f</span></td><td><span>从脚本文件中读取命令</span></td></tr><tr><td><span>-i</span></td><td><span>直接修改原始文件</span></td></tr><tr><td><span>-l</span></td><td><span>指定行的长度</span></td></tr><tr><td><span>-r</span></td><td><span>在脚本中使用扩展正则表达式</span></td></tr><tr><td><span>-s</span></td><td><span>默认情况下，sed将把命令行指定的多个文件名作为一个长的连续的输入流。而GNU sed则允许把它们当做单独的文件，这样的话，正则表达式不进行跨文件匹配</span></td></tr><tr><td><span>-u</span></td><td><span>最低限度的缓存输入与输出</span></td></tr></tbody></table></figure><p><span>sed编辑命令，</span></p><figure><table><thead><tr><th><span>命 令</span></th><th><span>作 用</span></th></tr></thead><tbody><tr><td><span>a</span><span>\</span></td><td><span>在当前行之后添加一行或多行，多行时除最后一行外，每行末尾需加续行符</span><span>\</span></td></tr><tr><td><span>c</span><span>\</span></td><td><span>用新文本替换当前行中的文本，多行时除最后一行外，每行末尾需加续行符</span><span>\</span></td></tr><tr><td><span>d</span></td><td><span>删除文本</span></td></tr><tr><td><span>i</span><span>\</span></td><td><span>在当前行之前插入文本，多行时除最后一行外，每行末尾需加续行符</span><span>\</span></td></tr><tr><td><span>l</span></td><td><span>显示不可打印字符</span></td></tr><tr><td><span>p</span></td><td><span>打印文本</span></td></tr><tr><td><span>r</span></td><td><span>从文件中读取输入行</span></td></tr><tr><td><span>s</span></td><td><span>匹配查找和替换</span></td></tr><tr><td><span>w</span></td><td><span>将所选文本写入文件</span></td></tr></tbody></table></figure><ul><li><span>awk</span>
+<span>包括上述的 </span><code>sed</code><span>，</span><code>awk</code><span>实际上已经不是bash语言中的组成部分，而是独立的脚本语言，因此 </span><code>awk</code><span>既可以在终端完成相关的命令，也可以编写对应的脚本文件，文件后缀为 </span><code>.awk</code><span>，第一行为 </span><code>#!/usr/bin/awk -f</code><span>。脚本内部的编写方式，与bash类似，只不过包含着 </span><code>awk</code><span>自身特有的相关命令。</span>
+<span>下面简要介绍相关的命令操作，</span></li></ul><ol start='' ><li><span>格式</span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">awk</span> <span class="cm-string">'命令'</span> 文件</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>当未指明文件，则从标准输入中读取内容。</span></p><ol start='2' ><li><span>读取</span>
+<code>$0</code><span>指读取文件的每一行，</span><code>$n</code><span>(n&gt;0)意味读取对应的列。</span>
+<span>假设文件 test.txt的内容如下，</span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hang1 lie12 lie13</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">hang2 lie22 lie23</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><p><span>命令 </span><code>awk &#39;{print $0}&#39; test.txt</code><span>，将按行输出文件内容，</span><code>print</code><span>为</span><code>awk</code><span>内置的输出命令。</span>
+<span>命令 </span><code>awk &#39;{print NR,$2}&#39; test.txt</code><span>，其中 </span><code>NR</code><span>为</span><code>awk</code><span>内置的变量，表示当前行的序号，输出如下</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="text"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="text"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1 lie12</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2 lie22</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 42px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div></pre><p><span>当不存在文件，则键盘输入的内容，也会被按行读取，之后也可按列输出，等同于文件内容。</span></p><ol start='3' ><li><span>匹配</span>
+<span>文本处理自然需要支持正则表达式。某一列作模式匹配时，使用符号 </span><code>~</code><span>。</span>
+<span>其它的，为提取内容时，有时需要按某一分隔符提取，比如提取的内容是两个列的内容被用 </span>‘<span>:</span>’<span>分隔，则用选项 </span><code>-F</code><span>，命令为 </span><code>awk -F: &#39;命令&#39; 文件</code><span>，也可以用 </span><code>FS</code><span>命令。当内部的命令包括多个不同的命令语句，用分号分隔开。</span>
+<span>上述介绍了从文本提取，若需要在输出时将内容按指定的分隔符分开(默认空格)，使用命令 </span><code>OFS</code><span>指定。当从文本中按分隔符 </span>’<span>:</span>’<span>提取，并输出时用 </span>’<span>#</span>’<span>分隔。</span><code>awk &#39;{FS=&#39;:&#39;;OFS=&quot;#&quot;;print 列}&#39; 文件</code><span>。</span></li><li><span>函数</span>
+<span>有时，需要指定一段命令中，某一命令是首先执行，或某一命令是最后执行的。对应着语句 </span><code>BEGIN{}</code><span>，</span><code>END{}</code><span>。</span>
+<span>同时，这里也可以使用if，while的判断循环函数，前后的语句用花括号包裹，花括号内部的命令用分号分隔。当然也可以将则这些语句写在awk脚本文件中。</span><code>exit</code><span>用于终止awk程序。</span>
+<span>若是不在文件第一行写入 </span><code>#!/usr/bin/awk -f</code><span>，则使用 </span><code>awk [选项] -f 脚本文件名</code><span>。</span>
+<span>此外还有特殊的命令 </span><code>next</code><span>，可以跳过当前awk后面的命令，例如对文本中的每一行进行操作，若某一行存在问题可直接跳过其它命令并开始执行文本的下一行。</span></li></ol><h3 id='7-文件处理'><span>7 文件处理</span></h3><p><span>针对文件的操作，Linux系统本身便具有多种命令，可详细了解，如查询的 </span><code>find</code><span>，比较用的 </span><code>common</code><span>和 </span><code>diff</code></p><ul><li><span>重定向</span>
+<span>通过符号 </span><code>&gt;</code><span>或 </span><code>&lt;</code><span>可将结果输出到指定文件，或从指定文件输入内容。</span>
+<span>其中在符号前可附带数字 0、1或2，这些数字为文件描述符，每个进程都会附带着着三个文件描述符。可将指定的内容输出。</span></li></ul><p><span>0为标准输入，代表默认输入文件，即执行命令的来源，通常是键盘输入，也可以是某个文件或是其它命令的结果，此时就需要输入重定向。</span>
+<span>1为标准输出，即执行结果将存放的位置，通常为显示器，其它位置则需要重定向。</span>
+<span>2为标准错误，通常结果输出到显示器，其它位置需重定向。</span>
+<span>例如，将系统某个目录下的内容及其权限等信息输出到某个文件内，</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ls</span> <span class="cm-attribute">-l</span> 目录 &gt; 文件</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ls</span> <span class="cm-attribute">-l</span> 目录 <span class="cm-number">2</span>&gt; 文件1<span class="cm-comment">#将错误记录输出到文件1中</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ls</span> <span class="cm-attribute">-l</span> 目录 &amp;&gt; 文件2<span class="cm-comment">#将标准输出于标准错误输出到文件2中</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 63px;"></div><div class="CodeMirror-gutters" style="display: none; height: 63px;"></div></div></div></pre><p><span>上述的符号在输出到对应文件中时，会将原有的内容清空。</span></p><p><span>可采用追加方式，避免清空，即符号 </span><code>&gt;&gt;</code><span>。</span>
+<code>&lt;&lt; 分隔符</code><span>，表示命令需要不断地读取输入，直到遇到指定的分隔符。</span></p><p><span>文件描述符重定向</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 8.5px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style="text-rendering: auto;"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">文件描述符a&gt;&amp;文件描述符b</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>将a对应的输出变成向b一样输出到对应的位置。</span></p><p><span>上述的方式只是对当前命令的输入输出作操作。若是需要让以后的命令都能够定向到某个文件，可使用命令 </span><code>exec</code><span>。相关使用如下，</span></p><figure><table><thead><tr><th><span>重定向</span></th><th><span>说　明</span></th></tr></thead><tbody><tr><td><span>exec 2&gt;file</span></td><td><span>将所有命令的标准错误重定向到文件file</span></td></tr><tr><td><span>exec n&lt;file</span></td><td><span>只读的方式打开名称为file的文件，并且使用文件描述符n，n是大于3的整数</span></td></tr><tr><td><span>exec n&gt;file</span></td><td><span>以写入的方式打开名称为file的文件，并且使用文件描述符n，n是大于3的整数</span></td></tr><tr><td><span>exec n&lt;&gt;file</span></td><td><span>以读写方式打开文件file，并且使用文件描述符n，n是大于3的整数</span></td></tr><tr><td><span>exec n&gt;&amp;-</span></td><td><span>关闭文件描述符n</span></td></tr><tr><td><span>exec n&gt;&amp;m</span></td><td><span>使得文件描述符n成为文件描述符m的副本，即将文件描述符m复制到n</span></td></tr><tr><td><span>exec n&gt;&amp;-</span></td><td><span>关闭文件描述符n</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h3 id='附录'><span>附录</span></h3><h4 id='tput命令'><span>tput命令</span></h4><ul><li><span>字符串输出</span></li></ul><figure><table><thead><tr><th><span>名字</span></th><th><span>含义</span></th></tr></thead><tbody><tr><td><span>bel</span></td><td><span>警铃</span></td></tr><tr><td><span>blink</span></td><td><span>闪烁模式</span></td></tr><tr><td><span>bold</span></td><td><span>粗体</span></td></tr><tr><td><span>civis</span></td><td><span>隐藏光标</span></td></tr><tr><td><span>clear</span></td><td><span>清</span></td></tr><tr><td><span>cnorm</span></td><td><span>不隐藏光标</span></td></tr><tr><td><span>cup</span></td><td><span>移动光标到屏幕位置（x，y）</span></td></tr><tr><td><span>el</span></td><td><span>清除到行尾</span></td></tr><tr><td><span>ell</span></td><td><span>清除到行首</span></td></tr><tr><td><span>smso</span></td><td><span>启动突出模式</span></td></tr><tr><td><span>rmso</span></td><td><span>停止突出模式</span></td></tr><tr><td><span>smul</span></td><td><span>开始下划线模式</span></td></tr><tr><td><span>rmul</span></td><td><span>结束下划线模式</span></td></tr><tr><td><span>sc</span></td><td><span>保存当前光标位置</span></td></tr><tr><td><span>rc</span></td><td><span>恢复光标到最后保存位置</span></td></tr><tr><td><span>sgr0</span></td><td><span>正常屏幕</span></td></tr><tr><td><span>rev</span></td><td><span>逆转视图</span></td></tr></tbody></table></figure><ul><li><span>数字输出</span></li></ul><figure><table><thead><tr><th><span>名字</span></th><th><span>含义</span></th></tr></thead><tbody><tr><td><span>cols</span></td><td><span>列数目</span></td></tr><tr><td><span>ittab</span></td><td><span>设置宽度</span></td></tr><tr><td><span>lines</span></td><td><span>屏幕行数</span></td></tr></tbody></table></figure><ul><li><span>布尔输出</span></li></ul><figure><table><thead><tr><th><span>名字</span></th><th><span>含义</span></th></tr></thead><tbody><tr><td><span>chts</span></td><td><span>光标不可见</span></td></tr><tr><td><span>hs</span></td><td><span>具有状态行</span></td></tr></tbody></table></figure><h4 id='颜色值'><span>颜色值</span></h4><ul><li><span>前景色</span></li></ul><figure><table><thead><tr><th><span>数字</span></th><th><span>颜色</span></th><th><span>数字</span></th><th><span>颜色</span></th></tr></thead><tbody><tr><td><span>30</span></td><td><span>黑色</span></td><td><span>34</span></td><td><span>蓝色</span></td></tr><tr><td><span>31</span></td><td><span>红色</span></td><td><span>35</span></td><td><span>紫色</span></td></tr><tr><td><span>32</span></td><td><span>绿色</span></td><td><span>36</span></td><td><span>青色</span></td></tr><tr><td><span>33</span></td><td><span>黄（或棕）色</span></td><td><span>37</span></td><td><span>白（或灰）色</span></td></tr></tbody></table></figure><ul><li><span>背景色</span></li></ul><figure><table><thead><tr><th><span>数 字</span></th><th><span>颜 色</span></th><th><span>数 字</span></th><th><span>颜 色</span></th></tr></thead><tbody><tr><td><span>40</span></td><td><span>黑色</span></td><td><span>44</span></td><td><span>青色</span></td></tr><tr><td><span>41</span></td><td><span>红色</span></td><td><span>45</span></td><td><span>蓝色</span></td></tr><tr><td><span>42</span></td><td><span>绿色</span></td><td><span>46</span></td><td><span>青色</span></td></tr><tr><td><span>43</span></td><td><span>黄（或棕）色</span></td><td><span>47</span></td><td><span>白（或灰）色</span></td></tr></tbody></table></figure></div></div>
+</body>
+</html>
